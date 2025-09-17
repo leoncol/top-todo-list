@@ -1,49 +1,34 @@
 import "./styles.css";
-import displayHome from "./home";
-import displayMenu from "./menu"
-import displayAbout from "./about";
+import createNewTask from "./create-task.js";
+import createList from "./create-list.js";
+import addToList from "./add-to-list.js";
+
+let defaultList = new createList('Default', 'Default list');
 
 
-function buttons() {
-    const homeButton = document.querySelector("#home-button");
-    const menuButton = document.querySelector("#menu-button");
-    const aboutButton = document.querySelector("#about-button");
-
-    homeButton.addEventListener("click", changePage);
-    menuButton.addEventListener("click", changePage);
-    aboutButton.addEventListener("click", changePage);
-};
-
-function wipePage() {
-    const contentDiv = document.querySelector("#content");
-    contentDiv.innerHTML = '';
-}
-
-function loadNewPage(button) {
-    switch(button.id){
-        case "home-button":
-            displayHome();
-            break;
-        case "menu-button":
-            displayMenu();
-            break;
-        case "about-button":
-            displayAbout();
-            break;
-    }
-}
-
-function changePage(event) {
-    wipePage();
-    loadNewPage(event.target);
-}
-
-displayHome();
-buttons();
+addToList(defaultList, createNewTask());
 
 
+// let newTask = new createTask('Do work', 'Finish all tasks for the day', new Date("September 17, 2025"), 'high', "pending");
+
+/* let newTask1 = new createTask(prompt('Insert a title for your task.'),prompt('Insert a description for your task'),
+ new Date(prompt('Insert a valid date (Month day, year)')),prompt('Enter the priority (high/low)'),
+ prompt('Enter the status(pending, in progress, done')); */
+
+let testThis = 1;
+ 
+// defaultList.content.push(newTask);
+/* defaultList.content.push(newTask1); */
 
 
-console.log("We're live!");
+// console.log(newTask);
+console.log(defaultList);
+
+window.testThis = testThis;
+
+// window.newTask = newTask;
+
+window.defaultList = defaultList;
+
 
 
