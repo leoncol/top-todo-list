@@ -2,11 +2,12 @@ import "./styles.css";
 import createNewTask from "./create-task.js";
 import createList from "./create-list.js";
 import addToList from "./add-to-list.js";
+import deleteFromList from "./delete-from-list.js";
+import changeToList from "./change-to-list.js";
+import setTaskStatus from "./set-task-status.js";
 
 let defaultList = new createList('Default', 'Default list');
 
-
-addToList(defaultList, createNewTask());
 
 
 // let newTask = new createTask('Do work', 'Finish all tasks for the day', new Date("September 17, 2025"), 'high', "pending");
@@ -26,7 +27,6 @@ console.log(defaultList);
 
 window.testThis = testThis;
 
-// window.newTask = newTask;
 
 window.defaultList = defaultList;
 

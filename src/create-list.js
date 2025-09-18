@@ -11,3 +11,12 @@ class NewList {
     
 } 
 
+function createNewList(title, description, content) {
+
+    let newList = new NewList(title, description, content)
+   
+    
+    return newList;
+}
+
+window.createNewList = createNewList;

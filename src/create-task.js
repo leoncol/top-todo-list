@@ -1,4 +1,5 @@
 export default createNewTask
+import addToList from "./add-to-list";
 
 
 class NewTask {
@@ -13,16 +14,11 @@ class NewTask {
 }
 
 function createNewTask(title, description, dueDate, priority, status) {
-
-    title = prompt();
-    description = prompt();
-    dueDate = prompt();
-    priority = prompt();
-    status = prompt();
+    status = 'pending';
     let newTask = new NewTask(title, description, dueDate, priority, status)
-   
+    addToList(defaultList, newTask);
     
-    return newTask;
+    
 }
 
 
