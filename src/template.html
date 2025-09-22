@@ -3,9 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webpack</title>
+    <title>Admin Dashboard</title>
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    <p>Test</p>
+    <div class="global-container">
+        <div class="sidebar">
+            <div class="branding">
+                <ul>
+                    <li>
+                        <div class="dashboard-centering-logo-div">
+                            <img src="assets/my-todo-logo.png" class="dashboard-icon">
+                        </div>
+                        <h1 class="sidebar-title">My ToDo List</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="navigation">
+                <ul id="myUL">
+                    <li>
+                        <span class="caret sidebar-text">
+                            <!--<div class="sidebar-centering-logo-div">
+                                <img src="assets/folder-icon.svg" class="icon caret">
+                            </div>
+                             --> 
+                            <span class="label">Projects</span>
+                    </span> 
+                    <ul class="nested">
+                        <li class="task">Test</li>
+                        <li class="task">Test</li>
+                    </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="header">
+            <div class="header-first-row">
+                <div class="search-bar">
+                    <ul>
+                        <li>
+                            <div class="header-search-bar-centering-logo-div">
+                                <img src="assets/magnify.svg" class="icon">
+                            </div>
+                            <div class="search-bar-field"></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="profile-bar">
+                    <ul>
+                        <li>
+                            <div class="header-profile-bar-centering-logo-div">
+                                <img src="assets/bell-badge-outline.svg" class="icon">
+                            </div>
+                            <div class="header-profile-bar-centering-profilepicture-div">
+                                <img src="assets/profilepicture.png" class="profile-picture">
+                            </div>
+                            <p class="profile-bar-name">John Doe</p>
+                        </li>
+                    </ul> 
+                </div>
+            </div>
+            <div class="header-second-row">
+                <div class="hi-name">
+                    <div class="big-profile-picture-container">
+                        <img src="assets/profilepicture.png" class="big-profile-picture">
+                    </div>
+                    <div class="greeting-user">
+                        <p class="hi">Hi there,</p>
+                        <p class="user-name-account">John Doe (@johndoe)</p>
+                    </div>
+                </div>
+                <div class="header-buttons">
+                    <button class="buttons">New</button>
+                    <button class="buttons">Upload</button>
+                    <button class="buttons">Share</button>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="cards-projects-container">
+                <p class="cards-projects-title">Your projects</p>
+                <div class="cards-projects">
+                    <div class="card">
+                        <div class="card-text-container">
+                            <p class="card-text-title">Title card</p>
+                            <p class="card-text">Lorem ipsum
+                                dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam</p>
+                        </div>
+                        <div class="card-icons-container">
+                            <div class="card-icons">
+                                <img src="assets/star-check-outline.svg" class="icon">
+                                <img src="assets/eye-circle-outline.svg" class="icon">
+                                <img src="assets/share-variant-outline.svg" class="icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-text-container">
+                            <p class="card-text-title">Title card</p>
+                            <p class="card-text">Lorem ipsum
+                                dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam</p>
+                        </div>
+                        <div class="card-icons-container">
+                            <div class="card-icons">
+                                <img src="assets/star-check-outline.svg" class="icon">
+                                <img src="assets/eye-circle-outline.svg" class="icon">
+                                <img src="assets/share-variant-outline.svg" class="icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-text-container">
+                            <p class="card-text-title">Title card</p>
+                            <p class="card-text">Lorem ipsum
+                                dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam</p>
+                        </div>
+                        <div class="card-icons-container">
+                            <div class="card-icons">
+                                <img src="assets/star-check-outline.svg" class="icon">
+                                <img src="assets/eye-circle-outline.svg" class="icon">
+                                <img src="assets/share-variant-outline.svg" class="icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-text-container">
+                            <p class="card-text-title">Title card</p>
+                            <p class="card-text">Lorem ipsum
+                                dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam</p>
+                        </div>
+                        <div class="card-icons-container">
+                            <div class="card-icons">
+                                <img src="assets/star-check-outline.svg" class="icon">
+                                <img src="assets/eye-circle-outline.svg" class="icon">
+                                <img src="assets/share-variant-outline.svg" class="icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-text-container">
+                            <p class="card-text-title">Title card</p>
+                            <p class="card-text">Lorem ipsum
+                                dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam</p>
+                        </div>
+                        <div class="card-icons-container">
+                            <div class="card-icons">
+                                <img src="assets/star-check-outline.svg" class="icon">
+                                <img src="assets/eye-circle-outline.svg" class="icon">
+                                <img src="assets/share-variant-outline.svg" class="icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-text-container">
+                            <p class="card-text-title">Title card</p>
+                            <p class="card-text">Lorem ipsum
+                                dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam</p>
+                        </div>
+                        <div class="card-icons-container">
+                            <div class="card-icons">
+                                <img src="assets/star-check-outline.svg" class="icon">
+                                <img src="assets/eye-circle-outline.svg" class="icon">
+                                <img src="assets/share-variant-outline.svg" class="icon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

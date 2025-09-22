@@ -5,6 +5,16 @@ import addToList from "./add-to-list.js";
 import deleteFromList from "./delete-from-list.js";
 import changeToList from "./change-to-list.js";
 import setTaskStatus from "./set-task-status.js";
+import setPriority from "./set-priority.js";
+
+var toggler = document.getElementsByClassName("caret");
+var i;
+
+for (i = 0; i < toggler.length; i++) {
+  toggler[i].addEventListener("click", function() {
+    this.parentElement.querySelector(".nested").classList.toggle("active");
+  });
+}
 
 let defaultList = new createList('Default', 'Default list');
 
