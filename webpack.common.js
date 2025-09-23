@@ -15,12 +15,16 @@ module.exports = {
   },
   devtool: "eval-source-map",
   devServer: {
-   watchFiles:["./src/template.html","./src/styles.css"]
+   watchFiles:["./src/template.html","./src/styles.css", "./src/lists.html"]
   },
   plugins: [
   new HtmlWebpackPlugin({
    template:"./src/template.html",
     }),
+  new HtmlWebpackPlugin({
+   template:"./src/lists.html",
+   filename: "lists.html",
+   }),
     ],
    module: {
      rules: [

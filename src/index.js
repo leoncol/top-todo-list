@@ -7,6 +7,8 @@ import changeToList from "./change-to-list.js";
 import setTaskStatus from "./set-task-status.js";
 import setPriority from "./set-priority.js";
 
+var button = document.querySelector(".button-task");
+
 var toggler = document.getElementsByClassName("caret");
 var i;
 
@@ -41,4 +43,8 @@ window.testThis = testThis;
 window.defaultList = defaultList;
 
 
+function clicked() {
+  console.log('clicked and working');
+}
 
+button.addEventListener("click", clicked);
