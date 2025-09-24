@@ -7,6 +7,9 @@ import changeToList from "./change-to-list.js";
 import setTaskStatus from "./set-task-status.js";
 import setPriority from "./set-priority.js";
 
+const dialog = document.querySelector("dialog");
+const newList = document.querySelector("#new-list");
+
 var button = document.querySelector(".button-task");
 
 var toggler = document.getElementsByClassName("caret");
@@ -48,3 +51,9 @@ function clicked() {
 }
 
 button.addEventListener("click", clicked);
+  // "Show the dialog" button opens the dialog modally
+  newList.addEventListener("click", () => {
+    dialog.showModal();
+  });
+  
+
