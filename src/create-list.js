@@ -1,4 +1,9 @@
-export default
+
+const listTitleInput = document.querySelector("#list-title");
+
+const listDescriptionInput = document.querySelector("#list-description");
+
+export default createNewList;
 
 
 
@@ -11,12 +16,16 @@ class NewList {
     
 } 
 
-function createNewList(title, description, content) {
+function createNewList() {
 
-    let newList = new NewList(title, description, content)
+    const title = listTitleInput.value;
+    const description = listDescriptionInput.value;
+    let newList = new NewList(title, description)
    
     
     return newList;
 }
 
 window.createNewList = createNewList;
+
+

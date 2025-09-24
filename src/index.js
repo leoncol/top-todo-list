@@ -7,6 +7,12 @@ import changeToList from "./change-to-list.js";
 import setTaskStatus from "./set-task-status.js";
 import setPriority from "./set-priority.js";
 
+
+
+const submitButton = document.querySelector("#submit");
+const enterListForm = document.querySelector("#enter-list");
+const closeButton = document.querySelector("dialog #close-button");
+
 const dialog = document.querySelector("dialog");
 const newList = document.querySelector("#new-list");
 
@@ -55,5 +61,35 @@ button.addEventListener("click", clicked);
   newList.addEventListener("click", () => {
     dialog.showModal();
   });
+
+// "Close" button closes the dialog
+closeButton.addEventListener("click", () => {
+  dialog.close();
+});
+
+
   
 
+/* function addBookToLibrary() { // This calls the constructor and adds the books to the library.
+
+  const bookTitle = bookTitleInput.value;
+  const bookAuthor = bookAuthorInput.value;
+  const bookPages = bookPagesInput.value;
+  
+  retrieveBookStatus();
+    let newBook = new CreatedBook(bookTitle, bookAuthor, bookPages, bookStatus);
+    newBook.isRead();
+    myLibrary.push(newBook);
+    displayAndDelete(newBook);
+  }
+  */
+
+   
+  enterListForm.addEventListener("submit", function (event){
+    event.preventDefault();
+});
+
+submitButton.addEventListener("click", () => {
+    createList();
+  
+});
