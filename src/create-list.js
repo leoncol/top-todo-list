@@ -3,6 +3,9 @@ const listTitleInput = document.querySelector("#list-title");
 
 const listDescriptionInput = document.querySelector("#list-description");
 
+const listsFolder = [];
+
+
 export default createNewList;
 
 
@@ -23,9 +26,9 @@ function createNewList() {
     let newList = new NewList(title, description)
    
     
-    return newList;
+    listsFolder.push(newList);
 }
 
 window.createNewList = createNewList;
 
-
+window.listsFolder = listsFolder;

@@ -8,7 +8,6 @@ import setTaskStatus from "./set-task-status.js";
 import setPriority from "./set-priority.js";
 
 
-
 const submitButton = document.querySelector("#submit");
 const enterListForm = document.querySelector("#enter-list");
 const closeButton = document.querySelector("dialog #close-button");
@@ -91,5 +90,6 @@ closeButton.addEventListener("click", () => {
 
 submitButton.addEventListener("click", () => {
     createList();
+    dialog.close();
   
 });
