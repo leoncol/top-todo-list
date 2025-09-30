@@ -1,8 +1,4 @@
-
-const listTitleInput = document.querySelector("#list-title");
-
-const listDescriptionInput = document.querySelector("#list-description");
-
+import {formValues} from "./controller";
 const listsFolder = [];
 
 
@@ -21,8 +17,8 @@ class NewList {
 
 function createNewList() {
 
-    const title = listTitleInput.value;
-    const description = listDescriptionInput.value;
+    const title = formValues.listTitleInputValue;
+    const description = formValues.listDescriptionInputValue;
     let newList = new NewList(title, description)
    
     

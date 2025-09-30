@@ -6,27 +6,14 @@ import deleteFromList from "./delete-from-list.js";
 import changeToList from "./change-to-list.js";
 import setTaskStatus from "./set-task-status.js";
 import setPriority from "./set-priority.js";
+import {updateDOM, domElements, activateCaret} from "./dom-update-main.js";
 
 
-const submitButton = document.querySelector("#submit");
-const enterListForm = document.querySelector("#enter-list");
-const closeButton = document.querySelector("dialog #close-button");
 
-const dialog = document.querySelector("dialog");
-const newList = document.querySelector("#new-list");
 
-var button = document.querySelector(".button-task");
-
-var toggler = document.getElementsByClassName("caret");
-var i;
-
-for (i = 0; i < toggler.length; i++) {
-  toggler[i].addEventListener("click", function() {
-    this.parentElement.querySelector(".nested").classList.toggle("active");
-  });
-}
-
+activateCaret();
 let defaultList = new createList('Default', 'Default list');
+
 
 
 
@@ -45,7 +32,6 @@ let testThis = 1;
 // console.log(newTask);
 console.log(defaultList);
 
-window.testThis = testThis;
 
 
 window.defaultList = defaultList;

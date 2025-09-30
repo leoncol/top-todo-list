@@ -288,5 +288,13 @@
     "ws": "^8.18.3",
     "wsl-utils": "^0.1.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leoncol/top-todo-list.git"
+  },
+  "bugs": {
+    "url": "https://github.com/leoncol/top-todo-list/issues"
+  },
+  "homepage": "https://github.com/leoncol/top-todo-list#readme",
   "description": ""
 }
