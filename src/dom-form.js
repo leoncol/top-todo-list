@@ -1,5 +1,5 @@
 import { domElements } from "./dom-update-main";
-
+export {formEventListeners, clicked}
 function clicked() {
   console.log('clicked and working');
 }
@@ -7,8 +7,12 @@ function clicked() {
 let button = domElements.button;
 let dialog = domElements.dialog;
 let newList = domElements.newList;
+let closeButton = domElements.closeButton;
+let enterListForm = domElements.enterListForm;
+let submitButton = domElements.submitButton;
 
-button.addEventListener("click", clicked);
+function formEventListeners() {
+  button.addEventListener("click", clicked);
   // "Show the dialog" button opens the dialog modally
   newList.addEventListener("click", () => {
     dialog.showModal();
@@ -29,3 +33,5 @@ submitButton.addEventListener("click", () => {
     dialog.close();
   
 });
+
+}

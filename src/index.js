@@ -7,10 +7,11 @@ import changeToList from "./change-to-list.js";
 import setTaskStatus from "./set-task-status.js";
 import setPriority from "./set-priority.js";
 import {updateDOM, domElements, activateCaret} from "./dom-update-main.js";
+import { formEventListeners, clicked } from "./dom-form.js";
 
 
 
-
+formEventListeners();
 activateCaret();
 let defaultList = new createList('Default', 'Default list');
 
@@ -37,22 +38,6 @@ console.log(defaultList);
 window.defaultList = defaultList;
 
 
-function clicked() {
-  console.log('clicked and working');
-}
-
-button.addEventListener("click", clicked);
-  // "Show the dialog" button opens the dialog modally
-  newList.addEventListener("click", () => {
-    dialog.showModal();
-  });
-
-// "Close" button closes the dialog
-closeButton.addEventListener("click", () => {
-  dialog.close();
-});
-
-
   
 
 /* function addBookToLibrary() { // This calls the constructor and adds the books to the library.
@@ -69,13 +54,3 @@ closeButton.addEventListener("click", () => {
   }
   */
 
-   
-  enterListForm.addEventListener("submit", function (event){
-    event.preventDefault();
-});
-
-submitButton.addEventListener("click", () => {
-    createList();
-    dialog.close();
-  
-});

@@ -12,7 +12,7 @@ function updateDOM(){
 
 const domElements = {
     cardsProjects: document.querySelector(".cards-projects"),
-    newList: document.createElement("div"),
+    newList: document.querySelector("#new-list"),
     listTitleInput: document.querySelector("#list-title"),
     listDescriptionInput: document.querySelector("#list-description"),
 
