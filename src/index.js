@@ -1,6 +1,6 @@
 import "./styles.css";
 import createNewTask from "./create-task.js";
-import createList from "./create-list.js";
+import {createNewList} from "./create-list.js";
 import addToList from "./add-to-list.js";
 import deleteFromList from "./delete-from-list.js";
 import changeToList from "./change-to-list.js";
@@ -13,7 +13,7 @@ import { formEventListeners, clicked } from "./dom-form.js";
 
 formEventListeners();
 activateCaret();
-let defaultList = new createList('Default', 'Default list');
+let defaultList = new createNewList('Default', 'Default list');
 
 
 

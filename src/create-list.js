@@ -1,8 +1,9 @@
-import {formValues} from "./controller";
+import {getFormValues,displayListsInfo} from "./controller";
+export {createNewList, listsFolder}; 
 const listsFolder = [];
 
 
-export default createNewList;
+
 
 
 
@@ -16,14 +17,17 @@ class NewList {
 } 
 
 function createNewList() {
-
+    const formValues = getFormValues();
     const title = formValues.listTitleInputValue;
     const description = formValues.listDescriptionInputValue;
     let newList = new NewList(title, description)
    
     
     listsFolder.push(newList);
+    displayListsInfo(newList);
+
 }
+
 
 window.createNewList = createNewList;
 

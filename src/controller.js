@@ -1,12 +1,23 @@
+
+import {createNewList} from "./create-list.js"
 import { domElements } from "./dom-update-main";
-export {formValues}
+import domUpdateLists from "./dom-update-lists.js";
+export {getFormValues, activateCreateNewList, displayListsInfo};
 
-
-
-
-const formValues = {
-
-    listTitleInputValue: domElements.listTitleInput.value,
-    listDescriptionInputValue: domElements.listDescriptionInput.value
-
+function activateCreateNewList(){
+    createNewList();
 }
+
+function getFormValues(){
+    const listTitleInputValue = domElements.listTitleInput.value;
+    const listDescriptionInputValue = domElements.listDescriptionInput.value
+
+
+
+    return {listTitleInputValue, listDescriptionInputValue}
+}
+
+function displayListsInfo(list){
+    domUpdateLists(list);
+};
+

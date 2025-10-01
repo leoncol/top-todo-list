@@ -1,4 +1,5 @@
 import { domElements } from "./dom-update-main";
+import { activateCreateNewList } from "./controller";
 export {formEventListeners, clicked}
 function clicked() {
   console.log('clicked and working');
@@ -29,7 +30,7 @@ closeButton.addEventListener("click", () => {
 });
 
 submitButton.addEventListener("click", () => {
-    createList();
+    activateCreateNewList();
     dialog.close();
   
 });
