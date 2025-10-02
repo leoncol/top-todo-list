@@ -13,7 +13,7 @@ import { formEventListeners, clicked } from "./dom-form.js";
 
 formEventListeners();
 activateCaret();
-let defaultList = new createNewList('Default', 'Default list');
+
 
 
 
@@ -31,11 +31,7 @@ let testThis = 1;
 
 
 // console.log(newTask);
-console.log(defaultList);
 
-
-
-window.defaultList = defaultList;
 
 
   
