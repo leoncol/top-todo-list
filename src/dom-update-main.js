@@ -1,5 +1,5 @@
 import caretActivation from "./caret";
-export {domElements, activateCaret, createNewdomElements};
+export {domElements, activateCaret, createNewdomElements, preventButtonBubbling};
 
 function activateCaret(){
     caretActivation();
@@ -31,6 +31,7 @@ const domElements = {
     newTrashIcon: document.createElement("img")
 
 } */
+    const childButton = document.querySelectorAll(".icon")
 
 
 function createNewdomElements(){
@@ -48,6 +49,13 @@ function createNewdomElements(){
 
 
     return {newAnchor, newButton, newCard, newCardTextContainer, newCardTitle, newCardText, newIconContainer, newCardIconsLists, newAddIcon, newPenIcon, newTrashIcon};
+}
+
+function preventButtonBubbling(){
+    childButton.addEventListener('click', (event) => {
+        console.log('Child button clicked!');
+        event.stopPropagation(); // This stops the event from bubbling up to the parent div
+      });
 }
 
 // window.domNewElements = domNewElements;
@@ -77,4 +85,3 @@ window.domElements = domElements;
                     </div>
 
                 */
-

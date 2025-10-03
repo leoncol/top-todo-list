@@ -6,14 +6,16 @@ import deleteFromList from "./delete-from-list.js";
 import changeToList from "./change-to-list.js";
 import setTaskStatus from "./set-task-status.js";
 import setPriority from "./set-priority.js";
-import {updateDOM, domElements, activateCaret} from "./dom-update-main.js";
+import {updateDOM, domElements, activateCaret, preventButtonBubbling} from "./dom-update-main.js";
 import { formEventListeners, clicked } from "./dom-form.js";
-
+import caretActivation from "./caret.js";
 
 
 formEventListeners();
-activateCaret();
 
+caretActivation();
+
+preventButtonBubbling();
 
 
 

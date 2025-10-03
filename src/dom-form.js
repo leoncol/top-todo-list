@@ -13,7 +13,6 @@ let enterListForm = domElements.enterListForm;
 let submitButton = domElements.submitButton;
 
 function formEventListeners() {
-  button.addEventListener("click", clicked);
   // "Show the dialog" button opens the dialog modally
   newList.addEventListener("click", () => {
     dialog.showModal();
