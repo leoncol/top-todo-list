@@ -1,5 +1,5 @@
 import caretActivation from "./caret";
-export {domElements, activateCaret, createNewdomElements, preventButtonBubbling};
+export {domElements, activateCaret, createNewdomElements, preventButtonBubbling, updateChildButtons};
 
 function activateCaret(){
     caretActivation();
@@ -31,7 +31,12 @@ const domElements = {
     newTrashIcon: document.createElement("img")
 
 } */
-    const childButton = document.querySelectorAll(".icon")
+    let childButtons = document.querySelectorAll(".add-task");
+
+    function updateChildButtons(){
+        childButtons = document.querySelectorAll(".add-task");
+    }
+    window.childButtons = childButtons;
 
 
 function createNewdomElements(){
@@ -43,19 +48,24 @@ function createNewdomElements(){
     const newCardText = document.createElement("p");
     const newIconContainer = document.createElement("div");
     const newCardIconsLists = document.createElement("div");
-    const newAddIcon = document.createElement("img");
+    const newAddIcon = document.createElement("input");
     const newPenIcon = document.createElement("img");
     const newTrashIcon = document.createElement("img");
 
 
-    return {newAnchor, newButton, newCard, newCardTextContainer, newCardTitle, newCardText, newIconContainer, newCardIconsLists, newAddIcon, newPenIcon, newTrashIcon};
+
+    return {newAnchor, newButton, newCard, newCardTextContainer, newCardTitle, 
+        newCardText, newIconContainer, newCardIconsLists, newAddIcon, newPenIcon, newTrashIcon};
 }
 
 function preventButtonBubbling(){
-    childButton.addEventListener('click', (event) => {
-        console.log('Child button clicked!');
-        event.stopPropagation(); // This stops the event from bubbling up to the parent div
-      });
+    childButtons.forEach(button =>{
+        button.addEventListener('click', (event) => {
+            console.log('Child button clicked!');
+            event.preventDefault(); // This stops the event from bubbling up to the parent div
+          });
+    })
+   
 }
 
 // window.domNewElements = domNewElements;

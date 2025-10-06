@@ -7,9 +7,10 @@ module.exports = {
   mode: "development",
   entry: {
         app: "./src/index.js",
+	lists: "./src/lists.js",
         },
   output: {
-    filename: "main.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
@@ -20,10 +21,12 @@ module.exports = {
   plugins: [
   new HtmlWebpackPlugin({
    template:"./src/template.html",
+   chunks: ['app'],
     }),
   new HtmlWebpackPlugin({
    template:"./src/lists.html",
    filename: "lists.html",
+   chunks: ['lists'],
    }),
     ],
    module: {

@@ -1,5 +1,5 @@
 import addIcon from './assets/add-icon.svg'
-import { domElements, createNewdomElements } from "./dom-update-main";
+import { domElements, createNewdomElements, updateChildButtons, preventButtonBubbling } from "./dom-update-main";
 export default 
 
 
@@ -29,9 +29,12 @@ function domUpdateLists(list){
     domNewElements.newCard.appendChild(domNewElements.newIconContainer);
     domNewElements.newCardIconsLists.className = 'card-icons';
     domNewElements.newIconContainer.appendChild(domNewElements.newCardIconsLists);
-    domNewElements.newAddIcon.className = 'icon';
+    domNewElements.newAddIcon.type = 'image';
+    domNewElements.newAddIcon.classList.add('icon', 'add-task');
     domNewElements.newAddIcon.src = addIcon;
     domNewElements.newCardIconsLists.appendChild(domNewElements.newAddIcon);
+    updateChildButtons();
+    preventButtonBubbling();
 
 
 }
