@@ -9,10 +9,11 @@ import setPriority from "./set-priority.js";
 import {updateDOM, domElements, activateCaret, preventButtonBubbling} from "./dom-update-main.js";
 import { formEventListeners, clicked } from "./dom-form.js";
 import caretActivation from "./caret.js";
+import { activateCreateNewList } from "./controller.js";
 
 
 formEventListeners();
-
+activateCreateNewList();
 caretActivation();
 
 preventButtonBubbling();

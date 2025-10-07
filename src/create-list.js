@@ -1,7 +1,9 @@
 import {getFormValues,displayListsInfo} from "./controller";
 export {createNewList, listsFolder}; 
 const listsFolder = [];
-
+localStorage.setItem('listsFolder', JSON.stringify(listsFolder));
+const storedListsFolder = localStorage.getItem('listsFolder');
+const listsFolderRetrieve = JSON.parse(storedListsFolder);
 
 
 
@@ -17,14 +19,25 @@ class NewList {
 } 
 
 function createNewList() {
-    const formValues = getFormValues();
-    const title = formValues.listTitleInputValue;
-    const description = formValues.listDescriptionInputValue;
-    let newList = new NewList(title, description)
-   
+    if (listsFolder.length == 0){ // inserts the value for the "default or first list"
+        const title = 'First list';
+        const description = 'Insert your description here.'
+        let newList = new NewList(title, description)
+        listsFolderRetrieve.push(newList);
+        displayListsInfo(newList);
+        
+    } else {
+        const formValues = getFormValues();
+        const title = formValues.listTitleInputValue;
+        const description = formValues.listDescriptionInputValue;
+        let newList = new NewList(title, description)
+        listsFolderRetrieve.push(newList);
+        displayListsInfo(newList);
+    }
     
-    listsFolder.push(newList);
-    displayListsInfo(newList);
+   
+   
+   
 
 }
 
