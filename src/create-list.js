@@ -1,9 +1,26 @@
 import {getFormValues,displayListsInfo} from "./controller";
-export {createNewList, listsFolder}; 
+export {createNewList, listsFolder, sendToLocalStorage}; 
+
 const listsFolder = [];
-localStorage.setItem('listsFolder', JSON.stringify(listsFolder));
-const storedListsFolder = localStorage.getItem('listsFolder');
-const listsFolderRetrieve = JSON.parse(storedListsFolder);
+
+
+
+
+function sendToLocalStorage(){
+    if (listsFolder.length == 0){
+        localStorage.setItem('listsFolder', JSON.stringify(listsFolder));
+    }
+    
+
+}
+
+
+function getFromLocalStorage(){
+    const storedListsFolder = localStorage.getItem('listsFolder');
+    const listsFolderRetrieve = JSON.parse(storedListsFolder);
+    return listsFolderRetrieve
+}
+
 
 
 
@@ -23,7 +40,8 @@ function createNewList() {
         const title = 'First list';
         const description = 'Insert your description here.'
         let newList = new NewList(title, description)
-        listsFolderRetrieve.push(newList);
+        listsFolder.push(newList); 
+        localStorage.setItem('listsFolder', JSON.stringify(listsFolder));
         displayListsInfo(newList);
         
     } else {
@@ -31,7 +49,10 @@ function createNewList() {
         const title = formValues.listTitleInputValue;
         const description = formValues.listDescriptionInputValue;
         let newList = new NewList(title, description)
+        let listsFolderRetrieve = 0;
+        listsFolderRetrieve = getFromLocalStorage();
         listsFolderRetrieve.push(newList);
+        localStorage.setItem('listsFolder', JSON.stringify(listsFolderRetrieve));
         displayListsInfo(newList);
     }
     

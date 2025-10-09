@@ -10,10 +10,13 @@ import {updateDOM, domElements, activateCaret, preventButtonBubbling} from "./do
 import { formEventListeners, clicked } from "./dom-form.js";
 import caretActivation from "./caret.js";
 import { activateCreateNewList } from "./controller.js";
+import { sendToLocalStorage } from "./create-list.js";
 
 
 formEventListeners();
 activateCreateNewList();
+sendToLocalStorage();
+
 caretActivation();
 
 preventButtonBubbling();
