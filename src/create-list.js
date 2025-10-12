@@ -7,18 +7,22 @@ const listsFolder = [];
 
 
 function sendToLocalStorage(){
-    if (listsFolder.length == 0){
-        localStorage.setItem('listsFolder', JSON.stringify(listsFolder));
-    }
+    let checkLocalStorage = getFromLocalStorage();
+    localStorage.setItem('listsFolder', JSON.stringify(checkLocalStorage));
     
-
+    
 }
 
 
 function getFromLocalStorage(){
     const storedListsFolder = localStorage.getItem('listsFolder');
+    if (storedListsFolder != null) {
     const listsFolderRetrieve = JSON.parse(storedListsFolder);
     return listsFolderRetrieve
+    } else {
+        localStorage.setItem('listsFolder', JSON.stringify(listsFolder));
+    }
+    
 }
 
 
@@ -40,8 +44,8 @@ function createNewList() {
         const title = 'First list';
         const description = 'Insert your description here.'
         let newList = new NewList(title, description)
-        listsFolder.push(newList); 
-        localStorage.setItem('listsFolder', JSON.stringify(listsFolder));
+        listsFolder.push(newList);
+        sendToLocalStorage();
         displayListsInfo(newList);
         
     } else {

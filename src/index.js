@@ -15,7 +15,7 @@ import { sendToLocalStorage } from "./create-list.js";
 
 formEventListeners();
 activateCreateNewList();
-sendToLocalStorage();
+// sendToLocalStorage();
 
 caretActivation();
 
