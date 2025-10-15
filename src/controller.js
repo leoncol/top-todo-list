@@ -2,7 +2,7 @@
 import {createNewList, getFromLocalStorage, sendToLocalStorage, getCounter, sendCounter, counter} from "./create-list.js"
 import { domElements } from "./dom-update-main";
 import {domUpdateLists} from "./dom-update-lists.js";
-export {getFormValues, activateCreateNewList, displayListsInfo, handleLocalStorage, activateCounter, sendUpdatedCounter};
+export {getFormValues, activateCreateNewList, displayListsInfo, handleLocalStorage, activateCounter};
 
 
 
@@ -16,10 +16,7 @@ function activateCounter(){
     return counter;
 }
 
-function sendUpdatedCounter(newCounter){
-    counter.number = newCounter;
-    sendCounter();
-}
+
 
 function getFormValues(){
     const listTitleInputValue = domElements.listTitleInput.value;
