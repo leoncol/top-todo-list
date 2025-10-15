@@ -1,11 +1,24 @@
 
-import {createNewList} from "./create-list.js"
+import {createNewList, getFromLocalStorage, sendToLocalStorage, getCounter, sendCounter, counter} from "./create-list.js"
 import { domElements } from "./dom-update-main";
-import domUpdateLists from "./dom-update-lists.js";
-export {getFormValues, activateCreateNewList, displayListsInfo};
+import {domUpdateLists} from "./dom-update-lists.js";
+export {getFormValues, activateCreateNewList, displayListsInfo, handleLocalStorage, activateCounter, sendUpdatedCounter};
+
+
 
 function activateCreateNewList(){
     createNewList();
+    domUpdateLists();
+}
+
+function activateCounter(){
+    let counter = getCounter();
+    return counter;
+}
+
+function sendUpdatedCounter(newCounter){
+    counter.number = newCounter;
+    sendCounter();
 }
 
 function getFormValues(){
@@ -17,7 +30,17 @@ function getFormValues(){
     return {listTitleInputValue, listDescriptionInputValue}
 }
 
-function displayListsInfo(list){
-    domUpdateLists(list);
+function handleLocalStorage(action){
+    if (action == 'set'){
+        sendToLocalStorage()
+    } else {
+        let updatedLocalStorage = getFromLocalStorage();
+        return updatedLocalStorage;
+
+    }
+}
+
+function displayListsInfo(){
+    domUpdateLists();
 };
 

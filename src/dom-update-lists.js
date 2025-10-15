@@ -1,16 +1,22 @@
 import addIcon from './assets/add-icon.svg'
 import { domElements, createNewdomElements, updateChildButtons, preventButtonBubbling } from "./dom-update-main";
-export default 
+import { handleLocalStorage, activateCounter, sendUpdatedCounter} from './controller';
+export {domUpdateLists} 
 
 
-function domUpdateLists(list){
 
+
+function domUpdateLists(){
+    let counter = activateCounter();
+    let localStorageCopy = handleLocalStorage('get');
+    let list = localStorageCopy[counter];
     const title = list.title;
     const description = list.description
     console.log(title);
     console.log(description);
     const domNewElements = createNewdomElements();
     domNewElements.newAnchor.href = "./lists.html";
+    domNewElements.newAnchor.className = "anchor-task";
     domElements.cardsProjects.appendChild(domNewElements.newAnchor); // appends task container
     domNewElements.newButton.className = "button-task";
     domNewElements.newButton.type = "button";
@@ -35,11 +41,32 @@ function domUpdateLists(list){
     domNewElements.newCardIconsLists.appendChild(domNewElements.newAddIcon);
     updateChildButtons();
     preventButtonBubbling();
+    lists = document.querySelectorAll(".anchor-task");
+    
+    
+    
 
 
 }
+let lists = document.querySelectorAll(".anchor-task");
+        window.lists = lists;
 
+function updateList(){
+    lists = document.querySelectorAll(".anchor-task");
+    return lists;
+}
 
+window.updateList = updateList; 
+
+ function refreshLists(){
+        let lists = updateList();
+        lists.forEach(element => {
+            element.remove();
+        })
+    }
+
+    window.refreshLists = refreshLists;
+    window.childButtons = childButtons;
 /*              
                         <button class="button-task" type="button">
                             <div class="card">

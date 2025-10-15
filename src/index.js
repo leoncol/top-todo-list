@@ -9,14 +9,14 @@ import setPriority from "./set-priority.js";
 import {updateDOM, domElements, activateCaret, preventButtonBubbling} from "./dom-update-main.js";
 import { formEventListeners, clicked } from "./dom-form.js";
 import caretActivation from "./caret.js";
-import { activateCreateNewList } from "./controller.js";
+import { activateCreateNewList, displayListsInfo,handleLocalStorage } from "./controller.js";
 import { sendToLocalStorage } from "./create-list.js";
 
 
 formEventListeners();
 activateCreateNewList();
 // sendToLocalStorage();
-
+// displayListsInfo();
 caretActivation();
 
 preventButtonBubbling();
