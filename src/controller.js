@@ -1,19 +1,14 @@
 
-import {createNewList, getFromLocalStorage, sendToLocalStorage, getCounter, sendCounter, counter} from "./create-list.js"
+import {createNewList, getFromLocalStorage, sendToLocalStorage} from "./create-list.js"
 import { domElements } from "./dom-update-main";
 import {domUpdateLists} from "./dom-update-lists.js";
-export {getFormValues, activateCreateNewList, displayListsInfo, handleLocalStorage, activateCounter};
+export {getFormValues, activateCreateNewList, displayListsInfo, handleLocalStorage};
 
 
 
 function activateCreateNewList(){
     createNewList();
     domUpdateLists();
-}
-
-function activateCounter(){
-    let counter = getCounter();
-    return counter;
 }
 
 

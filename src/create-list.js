@@ -1,37 +1,9 @@
 import first from "ee-first";
 import {getFormValues,displayListsInfo, } from "./controller";
-export {createNewList, listsFolder, sendToLocalStorage, getFromLocalStorage, getCounter, counter, sendCounter}; 
+export {createNewList, listsFolder, sendToLocalStorage, getFromLocalStorage}; 
 
 const listsFolder = [];
 
-
-const counter = {
-    number: 0,
-}
-
-function sendCounter(){
-    let sentCounter = counter.number;
-    localStorage.setItem('counter', JSON.stringify(sentCounter));
-    
-}
-
-
-function sendUpdatedCounter(newCounter){
-    counter.number = newCounter;
-    sendCounter();
-}
-
-
-function getCounter(){
-    const gottenCounter = localStorage.getItem('counter');
-    if (gottenCounter != null){
-    const gottenCounterRetrieve = JSON.parse(gottenCounter);
-    return gottenCounterRetrieve;
-    } else {
-        sendCounter();
-        return JSON.parse(localStorage.getItem('counter'));
-    }
-}
 
 
 function sendToLocalStorage(){
@@ -69,8 +41,9 @@ class NewList {
 } 
 
 function createNewList() {
-        sendToLocalStorage();
         let listsFolderCopy = getFromLocalStorage();
+        const formValues = getFormValues();
+        let allValues = Object.values(formValues); // gets all values from the formValues as an array
     if (listsFolderCopy.length == 0){ // inserts the value for the "default or first list"
         const title = 'First list';
         const description = 'Insert your description here.'
@@ -81,8 +54,7 @@ function createNewList() {
     
         
         
-    } else {
-        const formValues = getFormValues();
+    } else if (!allValues.includes('')){ // Ensures we don't introduce empty list elements when refreshing
         const title = formValues.listTitleInputValue;
         const description = formValues.listDescriptionInputValue;
         let newList = new NewList(title, description)
@@ -90,9 +62,7 @@ function createNewList() {
         listsFolderRetrieve = getFromLocalStorage();
         listsFolderRetrieve.push(newList);
         localStorage.setItem('listsFolder', JSON.stringify(listsFolderRetrieve));
-        let updateCounter = getCounter();
-        updateCounter = updateCounter += 1;
-        sendUpdatedCounter(updateCounter);
+      
 
 
     }
