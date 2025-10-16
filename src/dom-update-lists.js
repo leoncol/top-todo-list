@@ -1,7 +1,7 @@
 import addIcon from './assets/add-icon.svg'
 import { domElements, createNewdomElements, updateChildButtons, preventButtonBubbling } from "./dom-update-main";
 import { handleLocalStorage} from './controller';
-export {domUpdateLists} 
+export {domUpdateLists, checkList, updateList} 
 
 
 
@@ -16,7 +16,7 @@ function domUpdateLists(){
         console.log(title);
         console.log(description);
         const domNewElements = createNewdomElements();
-        domNewElements.newAnchor.href = "./lists.html";
+        //domNewElements.newAnchor.href = "./lists.html";
         domNewElements.newAnchor.className = "anchor-task";
         domElements.cardsProjects.appendChild(domNewElements.newAnchor); // appends task container
         domNewElements.newButton.className = "button-task";
@@ -57,6 +57,21 @@ let lists = document.querySelectorAll(".anchor-task");
 function updateList(){
     lists = document.querySelectorAll(".anchor-task");
     return lists;
+}
+
+function checkList(){
+    lists.forEach(list =>{
+        list.addEventListener("click", () => {
+            console.log(list);
+            getListIndex(list);
+        }) 
+    })
+}
+
+function getListIndex(list){
+    let nodeArray = Array.from(lists);
+    let index = nodeArray.indexOf(list);
+    console.log(index);
 }
 
 window.updateList = updateList; 

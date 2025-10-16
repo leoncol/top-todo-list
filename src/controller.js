@@ -1,7 +1,7 @@
 
 import {createNewList, getFromLocalStorage, sendToLocalStorage} from "./create-list.js"
 import { domElements } from "./dom-update-main";
-import {domUpdateLists} from "./dom-update-lists.js";
+import {domUpdateLists, checkList, updateList} from "./dom-update-lists.js";
 export {getFormValues, activateCreateNewList, displayListsInfo, handleLocalStorage};
 
 
@@ -9,6 +9,8 @@ export {getFormValues, activateCreateNewList, displayListsInfo, handleLocalStora
 function activateCreateNewList(){
     createNewList();
     domUpdateLists();
+    checkList();
+    updateList();
 }
 
 
