@@ -7,6 +7,7 @@ function activateCaret(){
 
 
 const domElements = {
+    headerList: document.querySelector(".header-lists"),
     cardsProjects: document.querySelector(".cards-projects"),
     newList: document.querySelector("#new-list"),
     listTitleInput: document.querySelector("#list-title"),

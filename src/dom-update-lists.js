@@ -16,7 +16,7 @@ function domUpdateLists(){
         console.log(title);
         console.log(description);
         const domNewElements = createNewdomElements();
-        //domNewElements.newAnchor.href = "./lists.html";
+        domNewElements.newAnchor.href = "./lists.html";
         domNewElements.newAnchor.className = "anchor-task";
         domElements.cardsProjects.appendChild(domNewElements.newAnchor); // appends task container
         domNewElements.newButton.className = "button-task";
@@ -63,7 +63,8 @@ function checkList(){
     lists.forEach(list =>{
         list.addEventListener("click", () => {
             console.log(list);
-            getListIndex(list);
+            let getIndex = getListIndex(list);
+            getListLocalStorage(getIndex);
         }) 
     })
 }
@@ -71,8 +72,32 @@ function checkList(){
 function getListIndex(list){
     let nodeArray = Array.from(lists);
     let index = nodeArray.indexOf(list);
-    console.log(index);
+    return index;
 }
+
+function sendListLocalStorage(list){
+    localStorage.setItem('currentList', JSON.stringify(list));
+    
+}
+
+/* function sendToLocalStorage(){
+    let checkLocalStorage = getFromLocalStorage();
+    localStorage.setItem('listsFolder', JSON.stringify(checkLocalStorage));
+    
+    
+} */
+
+
+function getListLocalStorage(index){
+    const accessListFolder = JSON.parse(localStorage.getItem('listsFolder'));
+    const list = accessListFolder[index];
+    sendListLocalStorage(list);
+    console.log(list.title);
+    console.log(list.description);
+    console.log(list.content);
+}
+
+
 
 window.updateList = updateList; 
 
