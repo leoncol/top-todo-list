@@ -1,5 +1,6 @@
 export default createNewTask
 import addToList from "./add-to-list";
+import { getFromLocalStorage, sendToLocalStorage } from "./create-list";
 import { format } from "date-fns";
 
 
@@ -30,9 +31,19 @@ class NewTask {
     
 }
 
+function getListContent(){
+    let mainList = getFromLocalStorage();
+    return mainList
+}
+
+window.getListContent = getListContent;
+
 function createNewTask(title, description, dueDate, priority, status, list) {
+    let mainList = getListContent();
+    let listContent = mainList[list].content;
     let newTask = new NewTask(title, description, dueDate, priority, status)
-    addToList(list, newTask);
+    
+    addToList(mainList,listContent, newTask);
     
     
 }

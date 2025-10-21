@@ -1,4 +1,3 @@
-import first from "ee-first";
 import {getFormValues,displayListsInfo, } from "./controller";
 export {createNewList, listsFolder, sendToLocalStorage, getFromLocalStorage}; 
 
@@ -6,9 +5,8 @@ const listsFolder = [];
 
 
 
-function sendToLocalStorage(){
-    let checkLocalStorage = getFromLocalStorage();
-    localStorage.setItem('listsFolder', JSON.stringify(checkLocalStorage));
+function sendToLocalStorage(updatedList){
+    localStorage.setItem('listsFolder', JSON.stringify(updatedList));
     
     
 }

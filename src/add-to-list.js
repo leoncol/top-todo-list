@@ -1,9 +1,10 @@
-import { listsFolder } from "./create-list";
+import { listsFolder, sendToLocalStorage } from "./create-list";
 export default
 
-function addToList(list, task){
-    list.content.push(task);
-    console.log(list.content);
+function addToList(mainList, list, task){
+    list.push(task);
+    sendToLocalStorage(mainList);
+    console.log(list);
 }
 
 

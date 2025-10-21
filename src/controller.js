@@ -24,14 +24,9 @@ function getFormValues(){
     return {listTitleInputValue, listDescriptionInputValue}
 }
 
-function handleLocalStorage(action){
-    if (action == 'set'){
-        sendToLocalStorage()
-    } else {
-        let updatedLocalStorage = getFromLocalStorage();
-        return updatedLocalStorage;
-
-    }
+function handleLocalStorage(){
+    let updatedLocalStorage = getFromLocalStorage();
+    return updatedLocalStorage;
 }
 
 function displayListsInfo(){

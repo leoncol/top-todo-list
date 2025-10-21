@@ -8,7 +8,7 @@ export {domUpdateLists, checkList, updateList}
 
 function domUpdateLists(){
     refreshLists();
-    let localStorageCopy = handleLocalStorage('get');
+    let localStorageCopy = handleLocalStorage();
     for (let i = 0; i < localStorageCopy.length; i++){
         let list = localStorageCopy[i];
         const title = list.title;
