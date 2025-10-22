@@ -89,32 +89,43 @@
             <h1 id="new-book-title">Add a new task</h1>
                         </div>
             <form id="enter-list" action="https://httpbin.org/post" method="post">
-                function createNewTask(title, description, dueDate, priority, status, list) {
-                    let newTask = new NewTask(title, description, dueDate, priority, status)
-                    addToList(list, newTask);
-                    
-                    
-                }
-                
                 <div class="position-form">
                     <div class="form-layout">
                             <div class="task-title-section">
                                 <label for="task-title">Title<br></label>
                                 <input type="text" id="task-title" name="task-title" required>
                             </div>
-                            <div class="task-description">
+                            <div class="task-description-section">
                                 <label for="task-description">Description<br></label>
                                 <input type="text" id="task-description" name="task-description">
                             </div>
+                            <div class="task-date-section">
+                                <label for="task-date">Due date<br></label>
+                                <input type="date" id="task-date" name="task-date">
+                            </div>
+                            <div class="task-priority-section">
+                                <label for="task-priority">Priority<br></label>
+                                <select id="task-priority" name="task-priority">
+                                    <option value="0">Low</option>
+                                    <option value="1">High</option>
+                                </select>
+                            </div>
+                            <div class="task-status-section">
+                                <label for="task-status">Status<br></label>
+                                <select id="task-status" name="task-status">
+                                    <option value="0">To do</option>
+                                    <option value="1">Doing</option>
+                                    <option value="2">Done</option>
+                                </select>
                             </div>
                             <div class="form-buttons">
                                 <button id="submit" type="submit">Submit</button>
                                 <button id="close-button">Close</button>
                             </div>
-                    </div>   
-            </div>
-            </form>
-        </div>
+                        </div>
+                    </div>
+                </form> 
+            </div>  
     </dialog>
 </body>
 </html>
