@@ -11,11 +11,6 @@ import { formEventListeners, clicked } from "./dom-form.js";
 import caretActivation from "./caret.js";
 import { activateCreateNewList, displayListsInfo,handleLocalStorage } from "./controller.js";
 import { sendToLocalStorage } from "./create-list.js";
-import { updateSelectedList } from "./dom-update-selected-list.js";
-
-// updateSelectedList();
-
-console.log('Hello world!');
 
 
 formEventListeners();

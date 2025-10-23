@@ -1,11 +1,12 @@
 import { domElements } from "./dom-update-main";
 import { activateCreateNewList } from "./controller";
-export {formEventListeners, clicked}
+export {formEventListeners, clicked, formCreateNewTask}
 function clicked() {
   console.log('clicked and working');
 }
 
-let button = domElements.button;
+
+let taskDialog = domElements.taskDialog;
 let dialog = domElements.dialog;
 let newList = domElements.newList;
 let closeButton = domElements.closeButton;
@@ -13,10 +14,14 @@ let enterListForm = domElements.enterListForm;
 let submitButton = domElements.submitButton;
 
 function formEventListeners() {
-  // "Show the dialog" button opens the dialog modally
+  // "Show the dialog" button opens the dialog modally for the lists form.
   newList.addEventListener("click", () => {
     dialog.showModal();
   });
+
+ 
+      
+
 
 // "Close" button closes the dialog
 closeButton.addEventListener("click", () => {
@@ -34,4 +39,18 @@ submitButton.addEventListener("click", () => {
   
 });
 
+}
+
+
+function formCreateNewTask(){
+  let lists = domElements.lists();
+  lists.forEach(list =>{
+    list.addEventListener("click", (event) => {
+      let type = event.target;
+      if (type.tagName === 'INPUT'){
+        taskDialog.showModal();
+      }
+    })
+  })
+    
 }

@@ -15,9 +15,14 @@ const domElements = {
     submitButton: document.querySelector("#submit"),
     enterListForm: document.querySelector("#enter-list"),
     closeButton: document.querySelector("dialog #close-button"),
-    dialog: document.querySelector("dialog"),
+    dialog: document.querySelector(".list-dialog"),
+    taskDialog: document.querySelector('.task-dialog'),
     button: document.querySelector(".button-task"),
-    toggler: document.getElementsByClassName("caret")
+    toggler: document.getElementsByClassName("caret"),
+    lists: function(){
+        let lists = document.querySelectorAll(".anchor-task");
+        return lists;
+    },
 };
 
 
@@ -59,15 +64,22 @@ function createNewdomElements(){
         newCardText, newIconContainer, newCardIconsLists, newAddIcon, newPenIcon, newTrashIcon};
 }
 
+
+
 function preventButtonBubbling(){
-    childButtons.forEach(button =>{
-        button.addEventListener('click', (event) => {
-            console.log('Child button clicked!');
+    let elements = domElements.lists();
+    elements.forEach(list =>{
+        list.addEventListener('click', (event) => {
+            let type = event.target;
+            console.log(`${type.tagName} clicked!`);
             event.preventDefault(); // This stops the event from bubbling up to the parent div
+
           });
     })
    
 }
+
+
 
 // window.domNewElements = domNewElements;
 window.domElements = domElements;
