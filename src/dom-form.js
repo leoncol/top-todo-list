@@ -1,12 +1,13 @@
 import { domElements } from "./dom-update-main";
 import { activateCreateNewList } from "./controller";
-export {formEventListeners, clicked, formCreateNewTask}
+export {formEventListeners, clicked, formCreateNewTask, formTaskEventListeners}
 function clicked() {
   console.log('clicked and working');
 }
 
 
 let taskDialog = domElements.taskDialog;
+let taskCloseButton = domElements.closeButtonTask;
 let dialog = domElements.dialog;
 let newList = domElements.newList;
 let closeButton = domElements.closeButton;
@@ -53,4 +54,10 @@ function formCreateNewTask(){
     })
   })
     
+}
+
+function formTaskEventListeners(){
+  taskCloseButton.addEventListener("click", () => {
+    taskDialog.close();
+  })
 }

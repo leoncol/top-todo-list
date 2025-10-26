@@ -72,8 +72,9 @@ function preventButtonBubbling(){
         list.addEventListener('click', (event) => {
             let type = event.target;
             console.log(`${type.tagName} clicked!`);
-            event.preventDefault(); // This stops the event from bubbling up to the parent div
-
+            if (type == 'INPUT'){ 
+                event.preventDefault(); // This makes sure we don't go to the next interface when clicking the input button to enter the new task
+            }
           });
     })
    
