@@ -1,9 +1,10 @@
 
 import {createNewList, getFromLocalStorage, sendToLocalStorage} from "./create-list.js"
+import createNewTask from "./create-task.js"
 import { domElements } from "./dom-update-main";
 import {domUpdateLists, checkList, updateList} from "./dom-update-lists.js";
 import { formCreateNewTask } from "./dom-form.js";
-export {getFormValues, activateCreateNewList, displayListsInfo, handleLocalStorage};
+export {getFormValues, activateCreateNewList, displayListsInfo, handleLocalStorage, activateCreateNewTask};
 
 
 
@@ -16,6 +17,12 @@ function activateCreateNewList(){
     
 }
 
+function activateCreateNewTask(){
+    createNewTask();
+}
+
+
+
 
 
 function getFormValues(){
@@ -25,6 +32,16 @@ function getFormValues(){
 
 
     return {listTitleInputValue, listDescriptionInputValue}
+}
+
+function getTaskFormValues(){
+    const taskTitleInputValue = domElements.taskTitleInput.value;
+    const taskDescriptionInputValue = domElements.taskDescriptionInput.value;
+    const taskDateInputValue = domElements.taskDateInput.value;
+    const taskPriorityInputValue = domElements.taskPriorityInput.value;
+    const taskStatusInputValue = domElements.taskStatusInput.value;
+
+    return {taskTitleInputValue, taskDescriptionInputValue, taskDateInputValue, taskPriorityInputValue, taskStatusInputValue}
 }
 
 function handleLocalStorage(){

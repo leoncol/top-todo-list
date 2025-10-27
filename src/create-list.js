@@ -1,5 +1,5 @@
 import {getFormValues,displayListsInfo, } from "./controller";
-export {createNewList, listsFolder, sendToLocalStorage, getFromLocalStorage}; 
+export {createNewList, listsFolder, sendToLocalStorage, getFromLocalStorage, addTaskToThisList, getListLocalStorage}; 
 
 const listsFolder = [];
 
@@ -56,10 +56,12 @@ function createNewList() {
         const title = formValues.listTitleInputValue;
         const description = formValues.listDescriptionInputValue;
         let newList = new NewList(title, description)
-        let listsFolderRetrieve = 0;
-        listsFolderRetrieve = getFromLocalStorage();
-        listsFolderRetrieve.push(newList);
-        localStorage.setItem('listsFolder', JSON.stringify(listsFolderRetrieve));
+        // let listsFolderRetrieve = 0;
+        // listsFolderRetrieve = getFromLocalStorage();
+        // listsFolderRetrieve.push(newList);
+        // localStorage.setItem('listsFolder', JSON.stringify(listsFolderRetrieve));
+        listsFolderCopy.push(newList);
+        localStorage.setItem('listsFolder', JSON.stringify(listsFolderCopy));
       
 
 
@@ -70,6 +72,34 @@ function createNewList() {
    
 
 }
+
+function getListLocalStorage(index){
+    addTaskToThisList.MainListCopy = getFromLocalStorage();
+    addTaskToThisList.listCopy = addTaskToThisList.MainListCopy[index];
+    let list = addTaskToThisList.listCopy;
+    let mainList = addTaskToThisList.MainListCopy;
+    console.log(list);
+    console.log(mainList);
+    
+    sendListLocalStorage(list);
+    console.log(list.title);
+    console.log(list.description);
+    console.log(list.content);
+}
+
+function sendListLocalStorage(list){
+    localStorage.setItem('currentList', JSON.stringify(list));
+    
+}
+
+
+
+const addTaskToThisList = {
+    MainListCopy: [],
+    listCopy: [],
+} 
+
+
 
 
 window.createNewList = createNewList;

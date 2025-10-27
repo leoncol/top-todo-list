@@ -8,6 +8,8 @@ function clicked() {
 
 let taskDialog = domElements.taskDialog;
 let taskCloseButton = domElements.closeButtonTask;
+let taskForm = domElements.enterTaskForm;
+let taskSubmitButton = domElements.taskSubmitButton;
 let dialog = domElements.dialog;
 let newList = domElements.newList;
 let closeButton = domElements.closeButton;
@@ -59,5 +61,9 @@ function formCreateNewTask(){
 function formTaskEventListeners(){
   taskCloseButton.addEventListener("click", () => {
     taskDialog.close();
+  })
+
+  taskForm.addEventListener("submit", function (event){
+    event.preventDefault();
   })
 }

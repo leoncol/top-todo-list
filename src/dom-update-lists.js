@@ -1,6 +1,7 @@
 import addIcon from './assets/add-icon.svg'
 import { domElements, createNewdomElements, updateChildButtons, preventButtonBubbling, lists } from "./dom-update-main";
 import { handleLocalStorage} from './controller';
+import { getFromLocalStorage, getListLocalStorage} from './create-list';
 export {domUpdateLists, checkList, updateList} 
 
 
@@ -84,16 +85,6 @@ function sendListLocalStorage(list){
     
     
 } */
-
-
-function getListLocalStorage(index){
-    const accessListFolder = JSON.parse(localStorage.getItem('listsFolder'));
-    const list = accessListFolder[index];
-    sendListLocalStorage(list);
-    console.log(list.title);
-    console.log(list.description);
-    console.log(list.content);
-}
 
 
 

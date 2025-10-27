@@ -13,10 +13,13 @@ const domElements = {
     listTitleInput: document.querySelector("#list-title"),
     listDescriptionInput: document.querySelector("#list-description"),
     submitButton: document.querySelector("#submit"),
+    taskSubmitButton: document.querySelector("#task-submit"),
     enterListForm: document.querySelector("#enter-list"),
+    enterTaskForm: document.querySelector("#enter-task"),
     closeButton: document.querySelector("dialog #close-button"),
     dialog: document.querySelector(".list-dialog"),
-    taskDialog: document.querySelector('.task-dialog'),
+    taskDialog: document.querySelector(".task-dialog"),
+    closeButtonTask: document.querySelector("#task-close-button"),
     button: document.querySelector(".button-task"),
     toggler: document.getElementsByClassName("caret"),
     lists: function(){
@@ -71,8 +74,9 @@ function preventButtonBubbling(){
     elements.forEach(list =>{
         list.addEventListener('click', (event) => {
             let type = event.target;
+            let tag = type.tagName;
             console.log(`${type.tagName} clicked!`);
-            if (type == 'INPUT'){ 
+            if (tag == 'INPUT'){ 
                 event.preventDefault(); // This makes sure we don't go to the next interface when clicking the input button to enter the new task
             }
           });
