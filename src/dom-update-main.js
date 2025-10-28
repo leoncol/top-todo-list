@@ -13,6 +13,11 @@ const domElements = {
     listTitleInput: document.querySelector("#list-title"),
     listDescriptionInput: document.querySelector("#list-description"),
     submitButton: document.querySelector("#submit"),
+    taskTitleInput: document.querySelector("task-title"),
+    taskDescriptionInput: document.querySelector("task-description"),
+    taskDateInput: document.querySelector("task-date"),
+    taskPriorityInput: document.querySelector("task-priority"),
+    taskStatusInput: document.querySelector("task-status"),
     taskSubmitButton: document.querySelector("#task-submit"),
     enterListForm: document.querySelector("#enter-list"),
     enterTaskForm: document.querySelector("#enter-task"),
@@ -23,9 +28,13 @@ const domElements = {
     button: document.querySelector(".button-task"),
     toggler: document.getElementsByClassName("caret"),
     lists: function(){
-        let lists = document.querySelectorAll(".anchor-task");
+        let lists = document.querySelectorAll(".anchor-list");
         return lists;
     },
+    selectedList: function(){
+        let selectedList = document.querySelector(".card");
+        return selectedList;
+    }
 };
 
 
@@ -58,8 +67,8 @@ function createNewdomElements(){
     const newIconContainer = document.createElement("div");
     const newCardIconsLists = document.createElement("div");
     const newAddIcon = document.createElement("input");
-    const newPenIcon = document.createElement("img");
-    const newTrashIcon = document.createElement("img");
+    const newPenIcon = document.createElement("input");
+    const newTrashIcon = document.createElement("input");
 
 
 

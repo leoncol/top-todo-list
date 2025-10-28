@@ -395,7 +395,7 @@ ul, #myUL {
     margin-top: 1rem;
 }
 
-.button-task {
+.button-list {
     all: unset;
     cursor: pointer;
     display: flex;
@@ -546,6 +546,14 @@ a {
     grid-row: 3 / 4;
     grid-column: 3 / 4;
 }
+
+.card-icons-container-full-view {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row: 3 / 4;
+    grid-column: 3 / 4;
+}
+
 
 .card-icons {
     grid-column: 2 / 3;

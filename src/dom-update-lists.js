@@ -1,4 +1,5 @@
-import addIcon from './assets/add-icon.svg'
+import addIcon from './assets/add-icon.svg';
+
 import { domElements, createNewdomElements, updateChildButtons, preventButtonBubbling, lists } from "./dom-update-main";
 import { handleLocalStorage} from './controller';
 import { getFromLocalStorage, getListLocalStorage} from './create-list';
@@ -18,9 +19,9 @@ function domUpdateLists(){
         console.log(description);
         const domNewElements = createNewdomElements();
         domNewElements.newAnchor.href = "./lists.html";
-        domNewElements.newAnchor.className = "anchor-task";
+        domNewElements.newAnchor.className = "anchor-list";
         domElements.cardsProjects.appendChild(domNewElements.newAnchor); // appends task container
-        domNewElements.newButton.className = "button-task";
+        domNewElements.newButton.className = "button-list";
         domNewElements.newButton.type = "button";
         domNewElements.newAnchor.appendChild(domNewElements.newButton);
         domNewElements.newCard.className = 'card';
@@ -41,6 +42,8 @@ function domUpdateLists(){
         domNewElements.newAddIcon.classList.add('icon', 'add-task');
         domNewElements.newAddIcon.src = addIcon;
         domNewElements.newCardIconsLists.appendChild(domNewElements.newAddIcon);
+        
+
         // preventButtonBubbling();
         
     }
@@ -70,14 +73,11 @@ function checkList(){
 
 function getListIndex(list){
     let nodeArray = Array.from( domElements.lists());
+    sendListNode(nodeArray); // sends DOM node to localStorage
     let index = nodeArray.indexOf(list);
     return index;
 }
 
-function sendListLocalStorage(list){
-    localStorage.setItem('currentList', JSON.stringify(list));
-    
-}
 
 /* function sendToLocalStorage(){
     let checkLocalStorage = getFromLocalStorage();
@@ -99,6 +99,12 @@ window.updateList = updateList;
 
     window.refreshLists = refreshLists;
     window.childButtons = childButtons;
+
+
+function sendListNode(listDOMNode){
+    localStorage.setItem('nodeList', JSON.stringify(listDOMNode));
+}
+    
 /*              
                         <button class="button-task" type="button">
                             <div class="card">
