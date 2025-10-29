@@ -4,7 +4,7 @@ import createNewTask from "./create-task.js"
 import { domElements } from "./dom-update-main";
 import {domUpdateLists, checkList, updateList} from "./dom-update-lists.js";
 import { formCreateNewTask } from "./dom-form.js";
-export {getFormValues, activateCreateNewList, displayListsInfo, handleLocalStorage, activateCreateNewTask};
+export {getFormValues, activateCreateNewList, displayListsInfo, handleLocalStorage, activateCreateNewTask, activateCreateNewTaskListView};
 
 
 
@@ -20,6 +20,11 @@ function activateCreateNewList(){
 function activateCreateNewTask(){
     createNewTask();
 }
+
+function activateCreateNewTaskListView(){
+    createNewTask();
+}
+
 
 
 

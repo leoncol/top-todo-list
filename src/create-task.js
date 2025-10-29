@@ -48,6 +48,17 @@ function createNewTask(title, description, dueDate, priority, status, list) {
     
 }
 
+function createNewTaskListView(title, description, dueDate, priority, status, list) {
+    let mainList = getListContent();
+    let listContent = mainList[list].content;
+    let newTask = new NewTask(title, description, dueDate, priority, status)
+    
+    addToList(mainList,listContent, newTask);
+    
+    
+}
+
+
 
 
 window.createNewTask = createNewTask;

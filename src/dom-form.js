@@ -1,6 +1,6 @@
-import { domElements } from "./dom-update-main";
-import { activateCreateNewList } from "./controller";
-export {formEventListeners, clicked, formCreateNewTask, formTaskEventListeners}
+import { domElements, listViewDomElements} from "./dom-update-main";
+import { activateCreateNewList, activateCreateNewTask, activateCreateNewTaskListView } from "./controller";
+export {formEventListeners, clicked, formCreateNewTask, formTaskEventListeners, formCreateNewTaskListsView, formTaskEventListenersListsView}
 function clicked() {
   console.log('clicked and working');
 }
@@ -10,6 +10,10 @@ let taskDialog = domElements.taskDialog;
 let taskCloseButton = domElements.closeButtonTask;
 let taskForm = domElements.enterTaskForm;
 let taskSubmitButton = domElements.taskSubmitButton;
+let taskDialogListView = listViewDomElements.taskDialog;
+let taskCloseButtonListView = listViewDomElements.closeButtonTask;
+let taskFormListView  = listViewDomElements.enterTaskForm;
+let taskSubmitButtonListView = listViewDomElements.taskSubmitButton;
 let dialog = domElements.dialog;
 let newList = domElements.newList;
 let closeButton = domElements.closeButton;
@@ -66,4 +70,52 @@ function formTaskEventListeners(){
   taskForm.addEventListener("submit", function (event){
     event.preventDefault();
   })
+
+  taskSubmitButton.addEventListener("submit", () => {
+    activateCreateNewTask();
+    taskDialog.close();
+  })
 }
+
+function formCreateNewTaskListsView(){
+      let selectedList = listViewDomElements.selectedList();
+      selectedList.addEventListener("click", (event) => {
+        let type = event.target;
+        let className = type.classList[1]; // we check the className by checking the 1 slot since elements will always have two classes the icon general class
+        // and the specific class.
+        switch (className){
+          case 'add-task':
+            taskDialogListView.showModal();
+            break;
+        }
+        console.log(className);
+
+      })
+}
+
+function formTaskEventListenersListsView(){
+  taskCloseButtonListView.addEventListener("click", () => {
+    taskDialogListView.close();
+  })
+
+  taskFormListView.addEventListener("submit", function (event){
+    event.preventDefault();
+  })
+
+  taskSubmitButtonListView.addEventListener("submit", () => {
+    activateCreateNewTaskListView();
+    taskDialogListView.close();
+  })
+}
+
+function checkSelectedList(){
+        selectedList.addEventListener("click", () => {
+            console.log(selectedList);
+            let selectedListData = getSelectedList();
+            console.log(selectedListData.title);
+            console.log(selectedListData.description);
+        }) 
+    
+}
+
+

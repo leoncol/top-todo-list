@@ -240,7 +240,7 @@ dialog {
     
 }
 
-.task-dialog {
+.task-dialog, .task-dialog-lview {
     
     left: 40%;
     top: 20%;
@@ -251,6 +251,7 @@ dialog {
     box-shadow: rgba(0, 0, 0, 0.315) 2px 2px 5px;
     
 }
+
 
 
 

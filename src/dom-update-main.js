@@ -1,5 +1,5 @@
 import caretActivation from "./caret";
-export {domElements, activateCaret, createNewdomElements, preventButtonBubbling, updateChildButtons};
+export {domElements, listViewDomElements, activateCaret, createNewdomElements, preventButtonBubbling, updateChildButtons};
 
 function activateCaret(){
     caretActivation();
@@ -30,12 +30,24 @@ const domElements = {
     lists: function(){
         let lists = document.querySelectorAll(".anchor-list");
         return lists;
-    },
+    }
+};
+
+const listViewDomElements = {
+    taskTitleInput: document.querySelector("task-title-lview"),
+    taskDescriptionInput: document.querySelector("task-description-lview"),
+    taskDateInput: document.querySelector("task-date-lview"),
+    taskPriorityInput: document.querySelector("task-priority-lview"),
+    taskStatusInput: document.querySelector("task-status-lview"),
+    taskSubmitButton: document.querySelector("#task-submit-lview"),
+    enterTaskForm: document.querySelector("#enter-task-lview"),
+    taskDialog: document.querySelector(".task-dialog-lview"),
+    closeButtonTask: document.querySelector("#task-close-button-lview"),
     selectedList: function(){
         let selectedList = document.querySelector(".card");
         return selectedList;
     }
-};
+}
 
 
 /* const domNewElements = {

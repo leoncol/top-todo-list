@@ -1,4 +1,5 @@
 import { getFromLocalStorage } from "./create-list";
+import { domElements, listViewDomElements } from "./dom-update-main";
 export {checkSelectedList, getSelectedList}
 
 function getSelectedList(){
@@ -7,7 +8,7 @@ function getSelectedList(){
 }
 
 function checkSelectedList(){
-    let selectedList = domElements.selectedList();
+    let selectedList = listViewDomElements.selectedList();
         selectedList.addEventListener("click", () => {
             console.log(selectedList);
             let selectedListData = getSelectedList();
