@@ -1,4 +1,4 @@
-import addToList from "./add-to-list";
+import {addToList} from "./add-to-list";
 import deleteFromList from "./delete-from-list";
 
 export default

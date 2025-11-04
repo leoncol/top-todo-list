@@ -34,11 +34,11 @@ const domElements = {
 };
 
 const listViewDomElements = {
-    taskTitleInput: document.querySelector("task-title-lview"),
-    taskDescriptionInput: document.querySelector("task-description-lview"),
-    taskDateInput: document.querySelector("task-date-lview"),
-    taskPriorityInput: document.querySelector("task-priority-lview"),
-    taskStatusInput: document.querySelector("task-status-lview"),
+    taskTitleInput: document.querySelector("#task-title-lview"),
+    taskDescriptionInput: document.querySelector("#task-description-lview"),
+    taskDateInput: document.querySelector("#task-date-lview"),
+    taskPriorityInput: document.querySelector("#task-priority-lview"),
+    taskStatusInput: document.querySelector("#task-status-lview"),
     taskSubmitButton: document.querySelector("#task-submit-lview"),
     enterTaskForm: document.querySelector("#enter-task-lview"),
     taskDialog: document.querySelector(".task-dialog-lview"),

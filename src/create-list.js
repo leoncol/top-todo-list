@@ -1,4 +1,4 @@
-import {getFormValues,displayListsInfo, } from "./controller";
+import {getFormValues} from "./dom-form"
 export {createNewList, listsFolder, sendToLocalStorage, getFromLocalStorage, addTaskToThisList, getListLocalStorage}; 
 
 const listsFolder = [];

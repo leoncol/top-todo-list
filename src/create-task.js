@@ -1,7 +1,8 @@
-export default createNewTask
-import addToList from "./add-to-list";
+export {createNewTask, createNewTaskListView}
+import {addToList, addToListView} from "./add-to-list";
 import { getFromLocalStorage, sendToLocalStorage } from "./create-list";
 import { format } from "date-fns";
+import { getTaskFormValues } from "./dom-form";
 
 
 class NewTask {
@@ -36,6 +37,16 @@ function getListContent(){
     return mainList
 }
 
+function getCurrentList(){
+    let currentList = JSON.parse(localStorage.getItem('currentList'));
+    console.log(currentList);
+    return currentList
+}
+
+
+
+window.getCurrentList = getCurrentList();
+
 window.getListContent = getListContent;
 
 function createNewTask(title, description, dueDate, priority, status, list) {
@@ -48,15 +59,23 @@ function createNewTask(title, description, dueDate, priority, status, list) {
     
 }
 
-function createNewTaskListView(title, description, dueDate, priority, status, list) {
-    let mainList = getListContent();
-    let listContent = mainList[list].content;
-    let newTask = new NewTask(title, description, dueDate, priority, status)
+function createNewTaskListView() {
+    let currentList = getCurrentList();
+    let content = currentList.content;
+    let TaskFormValues = getTaskFormValues();
+    let title = TaskFormValues.taskTitleInputValue;
+    let description = TaskFormValues.taskDescriptionInputValue;
+    let dueDate = TaskFormValues.taskDateInputValue;
+    let priority = TaskFormValues.taskPriorityInputValue;
+    let status = TaskFormValues.taskStatusInputValue;
+    let newTask = new NewTask(title, description, dueDate, priority, status);
     
-    addToList(mainList,listContent, newTask);
+    addToListView(currentList, content, newTask);
     
     
 }
+
+
 
 
 

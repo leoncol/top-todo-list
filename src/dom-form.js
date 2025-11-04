@@ -1,6 +1,6 @@
 import { domElements, listViewDomElements} from "./dom-update-main";
 import { activateCreateNewList, activateCreateNewTask, activateCreateNewTaskListView } from "./controller";
-export {formEventListeners, clicked, formCreateNewTask, formTaskEventListeners, formCreateNewTaskListsView, formTaskEventListenersListsView}
+export {formEventListeners, clicked, formCreateNewTask, formTaskEventListeners, formCreateNewTaskListsView, formTaskEventListenersListsView, getFormValues, getTaskFormValues}
 function clicked() {
   console.log('clicked and working');
 }
@@ -20,6 +20,7 @@ let closeButton = domElements.closeButton;
 let enterListForm = domElements.enterListForm;
 let submitButton = domElements.submitButton;
 
+window.taskSubmitButtonListView = taskSubmitButtonListView;
 function formEventListeners() {
   // "Show the dialog" button opens the dialog modally for the lists form.
   newList.addEventListener("click", () => {
@@ -102,11 +103,32 @@ function formTaskEventListenersListsView(){
     event.preventDefault();
   })
 
-  taskSubmitButtonListView.addEventListener("submit", () => {
+  taskSubmitButtonListView.addEventListener("click", () => {
     activateCreateNewTaskListView();
     taskDialogListView.close();
   })
 }
+
+function getFormValues(){
+    const listTitleInputValue = domElements.listTitleInput.value;
+    const listDescriptionInputValue = domElements.listDescriptionInput.value
+
+
+
+    return {listTitleInputValue, listDescriptionInputValue}
+}
+
+
+function getTaskFormValues(){
+    const taskTitleInputValue = listViewDomElements.taskTitleInput.value;
+    const taskDescriptionInputValue = listViewDomElements.taskDescriptionInput.value;
+    const taskDateInputValue = listViewDomElements.taskDateInput.value;
+    const taskPriorityInputValue = listViewDomElements.taskPriorityInput.value;
+    const taskStatusInputValue = listViewDomElements.taskStatusInput.value;
+
+    return {taskTitleInputValue, taskDescriptionInputValue, taskDateInputValue, taskPriorityInputValue, taskStatusInputValue}
+}
+
 
 function checkSelectedList(){
         selectedList.addEventListener("click", () => {
