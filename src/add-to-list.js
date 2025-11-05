@@ -8,8 +8,13 @@ function addToList(mainList, list, task){
 
 function addToListView(list, content, newTask){
     content.push(newTask);
-    sendToLocalStorage(list);
+    sendListLocalStorage(list);
 
 }
 window.addToList = addToList;
 console.log('working;');
+
+function sendListLocalStorage(list){
+    localStorage.setItem('currentList', JSON.stringify(list));
+    
+}

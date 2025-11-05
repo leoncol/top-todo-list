@@ -504,7 +504,7 @@ a {
 .card-task {
     display: grid;
     grid-template-columns: 0.1fr 0.2fr 5fr;
-    grid-template-rows: 0.3fr 2fr 0.5fr 0.5fr;
+    grid-template-rows: 0.3fr 2fr 1.2fr 0.5fr;
     border-radius: 10px;
     background: linear-gradient(to right, rgb(0, 81, 255) 0px, rgb(0, 81, 255) 8px, #fff 8px, #fff 100%);
     box-shadow: rgba(0, 0, 0, 0.315) 2px 2px 5px;
@@ -623,4 +623,57 @@ a {
 
 .main-title {
     font-weight: bold;
+}
+
+
+.metadata {
+    display: flex;
+    flex-direction: column;
+}
+
+.status {
+    display: flex;
+    gap: 10px;
+}
+
+.status-title {
+    font-weight: bold;
+}
+
+.status-value-todo {
+    color: red;
+}
+
+.status-value-doing {
+    color: blue;
+}
+
+.status-value-done {
+    color: green;
+}
+
+.due-date {
+    display: flex;
+    gap: 10px;
+}
+
+.due-date-title {
+    font-weight: bold;
+}
+
+.priority {
+    display: flex;
+    gap: 10px;
+}
+
+.priority-title {
+    font-weight: bold;
+}
+
+.priority-value-high {
+    color: red;
+}
+
+.priority-value-low {
+    color: green;
 }

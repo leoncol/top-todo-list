@@ -1,4 +1,4 @@
-export {createNewTask, createNewTaskListView}
+export {createNewTask, createNewTaskListView, getSelectedListFromLocalStorage}
 import {addToList, addToListView} from "./add-to-list";
 import { getFromLocalStorage, sendToLocalStorage } from "./create-list";
 import { format } from "date-fns";
@@ -12,21 +12,21 @@ class NewTask {
         this.dueDate = format(new Date(dueDate), "yyyy-MM-dd");
         switch (priority){
         case 0:
-            this.priority = 'low';
+            this.priority = 'Low';
             break;
         case 1:
-            this.priority = 'high';
+            this.priority = 'High';
             break;
         }
         switch (status){
         case 0:
-            this.status = 'to do';
+            this.status = 'To do';
             break;
         case 1:
-            this.status = 'doing';
+            this.status = 'Doing';
             break;
         case 2: 
-            this.status = 'done';    
+            this.status = 'Done';    
         }
     }
     
@@ -76,9 +76,27 @@ function createNewTaskListView() {
 }
 
 
+function getSelectedListFromLocalStorage(){
+    const storedSelectedList = JSON.parse(localStorage.getItem('currentList'));
+    return storedSelectedList;
+
+}
 
 
+/* 
+function getFromLocalStorage(){
+    const storedListsFolder = localStorage.getItem('listsFolder');
+    if (storedListsFolder != null) {
+    const listsFolderRetrieve = JSON.parse(storedListsFolder);
+    return listsFolderRetrieve;
+    } else {
+        localStorage.setItem('listsFolder', JSON.stringify(listsFolder)); // if it's the first item
+        return listsFolder
+    }
+    
+}
 
+*/
 
 window.createNewTask = createNewTask;
 

@@ -43,9 +43,14 @@ const listViewDomElements = {
     enterTaskForm: document.querySelector("#enter-task-lview"),
     taskDialog: document.querySelector(".task-dialog-lview"),
     closeButtonTask: document.querySelector("#task-close-button-lview"),
+    cardsProjects: document.querySelector(".cards-projects"),
     selectedList: function(){
         let selectedList = document.querySelector(".card");
         return selectedList;
+    },
+    listTasks: function(){
+        let listTasks = document.querySelectorAll(".card-task");
+        return listTasks;
     }
 }
 
