@@ -86,13 +86,43 @@ function createNewdomElements(){
     const newAddIcon = document.createElement("input");
     const newPenIcon = document.createElement("input");
     const newTrashIcon = document.createElement("input");
+    const newMetadata = document.createElement("div");
+    const newStatus = document.createElement("div");
+    const newStatusTitle = document.createElement("p");
+    const newStatusValue = document.createElement("p");
+    const newDueDate = document.createElement("div");
+    const newDueDateTitle = document.createElement("p");
+    const newDueDateValue = document.createElement("p");
+    const newPriority = document.createElement("p");
+    const newPriotityTitle = document.createElement("p");
+    const newPriorityValue = document.createElement("p");
+
 
 
 
     return {newAnchor, newButton, newCard, newCardTextContainer, newCardTitle, 
-        newCardText, newIconContainer, newCardIconsLists, newAddIcon, newPenIcon, newTrashIcon};
+        newCardText, newIconContainer, newCardIconsLists, newAddIcon, newPenIcon, newTrashIcon, newMetadata,
+    newStatus, newStatusTitle, newStatusValue, newDueDate, newDueDateTitle, newDueDateValue, newPriority, newPriotityTitle, newPriorityValue};
 }
 
+ /*
+                            
+                                <div class="due-date">
+                                    <p class="due-date-title">Due date:</p>
+                                    <p class="due-date-value">12-02-2100</p>
+                                </div>
+                                <div class="priority">
+                                    <p class="priority-title">Priority:</p>
+                                    <p class="priority-value-high">High</p>
+                                </div>
+                            </div>
+                            <div class="card-icons-tasks">
+                                <img src="assets/pen-icon.svg" class="icon">
+                                <img src="assets/trash-bin-icon.svg" class="icon">
+                            </div>
+                        </div>
+                    </div>
+        */
 
 
 function preventButtonBubbling(){

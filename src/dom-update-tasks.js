@@ -1,4 +1,5 @@
 import addIcon from './assets/add-icon.svg';
+import penIcon from './assets/pen-icon.svg';
 
 import { listViewDomElements, createNewdomElements,  updateChildButtons, preventButtonBubbling,  } from "./dom-update-main";
 import { handleLocalStorage, handleLocalStorageListView} from './controller';
@@ -33,20 +34,92 @@ function domUpdateLists(){
         domNewElements.newCardTitle.innerText = title;
         domNewElements.newCardText.className = 'card-text';
         domNewElements.newCardText.innerText = description;
-        
         domNewElements.newCardTextContainer.appendChild(domNewElements.newCardTitle);
         domNewElements.newCardTextContainer.appendChild(domNewElements.newCardText);
-        domNewElements.newIconContainer.className = 'card-icons-container-new-list';
+        domNewElements.newIconContainer.className = 'card-icons-container';
         domNewElements.newCard.appendChild(domNewElements.newIconContainer);
-        domNewElements.newCardIconsLists.className = 'card-icons';
+        domNewElements.newMetadata.className = 'metadata';
+        domNewElements.newIconContainer.appendChild(domNewElements.newMetadata);
+        domNewElements.newStatus.className = 'status';
+        domNewElements.newMetadata.appendChild(domNewElements.newStatus);
+        domNewElements.newStatusTitle.className = 'status-title';
+        domNewElements.newStatus.appendChild(domNewElements.newStatusTitle);
+        switch (status){
+            case 'To do':
+                domNewElements.newStatusValue.className = 'status-value-todo';
+                break;
+            case 'Doing':
+                domNewElements.newStatusValue.className = 'status-value-doing';
+                break;
+            case 'Done': 
+                domNewElements.newStatusValue.className = 'status-value-done';  
+                break; 
+            }
+        domNewElements.newStatusValue.innerText = status;
+        domNewElements.newStatus.appendChild(domNewElements.newStatusValue);
+        domNewElements.newDueDate.className = 'due-date';
+        domNewElements.newMetadata.appendChild(domNewElements.newDueDate);
+        domNewElements.newDueDateTitle.className = 'due-date-title';
+        domNewElements.newDueDateTitle.innerText = 'Due date:'
+        domNewElements.newDueDate.appendChild(domNewElements.newDueDateTitle);
+        domNewElements.newDueDateValue.className = 'due-date-value';
+        domNewElements.newDueDateValue.innerText = dueDate;
+        domNewElements.newDueDate.appendChild(domNewElements.newDueDateValue);
+        domNewElements.newPriority.className = 'priority';
+        domNewElements.newMetadata.appendChild(domNewElements.newPriority);
+        domNewElements.newPriotityTitle.className = 'priority-title';
+        domNewElements.newPriotityTitle.innerText = 'Priority:';
+        domNewElements.newPriority.appendChild(domNewElements.newPriotityTitle);
+        switch (priority){
+            case 'Low':
+                domNewElements.newPriorityValue.className = 'priority-value-high';
+                break;
+            case 'High':
+                domNewElements.newPriorityValue.className = 'priority-value-low';
+                break;
+            }
+        domNewElements.newPriorityValue.innerText = priority;
+        domNewElements.newPriority.appendChild(domNewElements.newPriorityValue);
+        domNewElements.newCardIconsLists.className = 'card-icons-tasks';
         domNewElements.newIconContainer.appendChild(domNewElements.newCardIconsLists);
-        domNewElements.newAddIcon.type = 'image';
-        domNewElements.newAddIcon.classList.add('icon', 'add-task');
-        domNewElements.newAddIcon.src = addIcon;
+        domNewElements.newPenIcon.type = 'image';
+        domNewElements.newPenIcon.classList.add('icon', 'edit-task');
+        domNewElements.newPenIcon.src = addIcon;
         domNewElements.newCardIconsLists.appendChild(domNewElements.newAddIcon);
         
 
-       /* <div class="card-task">
+       /* 
+
+
+       .priority-value-high {
+    color: red;
+}
+
+.priority-value-low {
+    color: green;
+}
+         this.status = 'To do';
+            break;
+        case 1:
+            this.status = 'Doing';
+            break;
+        case 2: 
+            this.status = 'Done'; 
+       
+
+            .status-value-todo {
+    color: red;
+}
+
+.status-value-doing {
+    color: blue;
+}
+
+.status-value-done {
+    color: green;
+}
+       
+       <div class="card-task">
                         <div class="card-text-container">
                             <p class="card-text-title">Title card</p>
                             <p class="card-text">Lorem ipsum
