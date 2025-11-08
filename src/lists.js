@@ -5,12 +5,12 @@ import { updateSelectedList } from "./dom-update-selected-list.js";
 import {checkSelectedList} from "./selected-list";
 import { formCreateNewTaskListsView, formTaskEventListenersListsView} from "./dom-form.js";
 import { domElements } from "./dom-update-main.js";
-import { activateCreateNewTaskListView } from "./controller.js";
+import { activateCreateNewTaskListView, activateDomUpdateTasks } from "./controller.js";
 
 updateSelectedList();
 todayDate();
 checkSelectedList();
 formCreateNewTaskListsView();
 formTaskEventListenersListsView();
-
+activateDomUpdateTasks();
 console.log('Hello world!');

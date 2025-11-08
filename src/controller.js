@@ -5,7 +5,7 @@ import { domElements } from "./dom-update-main";
 import {domUpdateLists, checkList, updateList} from "./dom-update-lists.js";
 import { formCreateNewTask } from "./dom-form.js";
 import { domUpdateTasks } from "./dom-update-tasks.js";
-export {activateCreateNewList, displayListsInfo, handleLocalStorage, activateCreateNewTask, activateCreateNewTaskListView, handleLocalStorageListView};
+export {activateCreateNewList, displayListsInfo, handleLocalStorage, activateCreateNewTask, activateCreateNewTaskListView, handleLocalStorageListView, activateDomUpdateTasks};
 
 
 
@@ -28,6 +28,9 @@ function activateCreateNewTaskListView(){
 
 }
 
+function activateDomUpdateTasks(){
+    domUpdateTasks();
+}
 
 
 
