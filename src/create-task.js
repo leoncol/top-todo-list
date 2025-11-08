@@ -66,8 +66,8 @@ function createNewTaskListView() {
     let title = TaskFormValues.taskTitleInputValue;
     let description = TaskFormValues.taskDescriptionInputValue;
     let dueDate = TaskFormValues.taskDateInputValue;
-    let priority = TaskFormValues.taskPriorityInputValue;
-    let status = TaskFormValues.taskStatusInputValue;
+    let priority = parseInt(TaskFormValues.taskPriorityInputValue);
+    let status = parseInt(TaskFormValues.taskStatusInputValue);
     let newTask = new NewTask(title, description, dueDate, priority, status);
     
     addToListView(currentList, content, newTask);

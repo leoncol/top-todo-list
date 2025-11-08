@@ -1,15 +1,16 @@
 import addIcon from './assets/add-icon.svg';
 import penIcon from './assets/pen-icon.svg';
+import trashIcon from './assets/trash-bin-icon.svg';
 
 import { listViewDomElements, createNewdomElements,  updateChildButtons, preventButtonBubbling,  } from "./dom-update-main";
 import { handleLocalStorage, handleLocalStorageListView} from './controller';
 import { getFromLocalStorage, getListLocalStorage} from './create-list';
-export {domUpdateLists, checkList, updateList} 
+export {domUpdateTasks, checkList} 
 
 
 
 
-function domUpdateLists(){
+function domUpdateTasks(){
     refreshTasks();
     let currentListCopy = handleLocalStorageListView(); 
     let currentListCopyContent = currentListCopy.content;
@@ -43,6 +44,7 @@ function domUpdateLists(){
         domNewElements.newStatus.className = 'status';
         domNewElements.newMetadata.appendChild(domNewElements.newStatus);
         domNewElements.newStatusTitle.className = 'status-title';
+        domNewElements.newStatusTitle.innerText = 'Status:'
         domNewElements.newStatus.appendChild(domNewElements.newStatusTitle);
         switch (status){
             case 'To do':
@@ -84,10 +86,12 @@ function domUpdateLists(){
         domNewElements.newIconContainer.appendChild(domNewElements.newCardIconsLists);
         domNewElements.newPenIcon.type = 'image';
         domNewElements.newPenIcon.classList.add('icon', 'edit-task');
-        domNewElements.newPenIcon.src = addIcon;
+        domNewElements.newPenIcon.src = penIcon;
         domNewElements.newCardIconsLists.appendChild(domNewElements.newAddIcon);
-        
-
+        domNewElements.newTrashIcon.type = 'image';
+        domNewElements.newTrashIcon.classList.add('icon', 'delete-task');
+        domNewElements.newTrashIcon.src = trashIcon;
+        domNewElements.newCardIconsLists.appendChild(domNewElements.newTrashIcon);
        /* 
 
 
@@ -193,7 +197,7 @@ function getListIndex(list){
 window.updateList = updateList; 
 
  function refreshTasks(){
-        let tasks = updateList();
+        let tasks = updateTasks();
         if (tasks != null){
             tasks.forEach(element => {
             element.remove();

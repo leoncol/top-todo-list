@@ -4,7 +4,8 @@ import {createNewTask, createNewTaskListView, getSelectedListFromLocalStorage } 
 import { domElements } from "./dom-update-main";
 import {domUpdateLists, checkList, updateList} from "./dom-update-lists.js";
 import { formCreateNewTask } from "./dom-form.js";
-export {activateCreateNewList, displayListsInfo, handleLocalStorage, activateCreateNewTask, activateCreateNewTaskListView};
+import { domUpdateTasks } from "./dom-update-tasks.js";
+export {activateCreateNewList, displayListsInfo, handleLocalStorage, activateCreateNewTask, activateCreateNewTaskListView, handleLocalStorageListView};
 
 
 
@@ -23,6 +24,8 @@ function activateCreateNewTask(){
 
 function activateCreateNewTaskListView(){
     createNewTaskListView();
+    domUpdateTasks();
+
 }
 
 
@@ -39,7 +42,7 @@ function handleLocalStorage(){
 }
 
 
-function hanndleLocalStorageListView(){
+function handleLocalStorageListView(){
     let updatedLocalStorageListView = getSelectedListFromLocalStorage();
     return updatedLocalStorageListView;
 }
