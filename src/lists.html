@@ -70,7 +70,7 @@
             </div>
         </div>
     </div>
-    <dialog class="task-dialog-lview">
+    <dialog id="task-dialog-lview">
         <div class="dialog-window">
             <div class="center-title">
             <h1 id="new-book-title">Add a new task</h1>
@@ -113,6 +113,32 @@
                     </div>
                 </form> 
             </div>  
+    </dialog>
+    <dialog id="edit-list-dialog">
+        <div class="dialog-window">
+            <div class="center-title">
+            <h1 id="new-book-title">Edit list</h1>
+            </div>
+            <form id="edit-list" action="" method="post">
+                <div class="position-form">
+                    <div class="form-layout">
+                            <div class="list-title-section">
+                                <label for="edit-list-title">Change title<br></label>
+                                <input type="text" id="edit-list-title" name="edit-list-title" required>
+                            </div>
+                            <div class="list-description-section">
+                                <label for="edit-list-description">Description<br></label>
+                                <input type="text" id="edit-list-description" name="edit-list-description">
+                            </div>
+                            </div>
+                            <div class="form-buttons">
+                                <button id="edit-save-changes" type="submit">Save changes</button>
+                                <button id="edit-close-button">Close</button>
+                            </div>
+                    </div>   
+            </div>
+            </form>
+        </div>
     </dialog>
 </body>
 </html>

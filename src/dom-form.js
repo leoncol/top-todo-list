@@ -1,5 +1,7 @@
 import { domElements, listViewDomElements} from "./dom-update-main";
 import { activateCreateNewList, activateCreateNewTask, activateCreateNewTaskListView } from "./controller";
+import { getSelectedList } from "./selected-list";
+import datePicker from "./datepicker";
 export {formEventListeners, clicked, formCreateNewTask, formTaskEventListeners, formCreateNewTaskListsView, formTaskEventListenersListsView, getFormValues, getTaskFormValues}
 function clicked() {
   console.log('clicked and working');
@@ -14,6 +16,9 @@ let taskDialogListView = listViewDomElements.taskDialog;
 let taskCloseButtonListView = listViewDomElements.closeButtonTask;
 let taskFormListView  = listViewDomElements.enterTaskForm;
 let taskSubmitButtonListView = listViewDomElements.taskSubmitButton;
+let editListDialog = listViewDomElements.editListDialog;
+let editListTitle = listViewDomElements.editListTitle;
+let editListDescription = listViewDomElements.editListDescription;
 let dialog = domElements.dialog;
 let newList = domElements.newList;
 let closeButton = domElements.closeButton;
@@ -57,6 +62,7 @@ function formCreateNewTask(){
       let type = event.target;
       if (type.tagName === 'INPUT'){
         taskDialog.showModal();
+        
       }
     })
   })
@@ -86,8 +92,12 @@ function formCreateNewTaskListsView(){
         // and the specific class.
         switch (className){
           case 'add-task':
+            datePicker();
             taskDialogListView.showModal();
             break;
+          case 'edit-list':
+            editListFormValues();
+            editListDialog.showModal();
         }
         console.log(className);
 
@@ -130,14 +140,14 @@ function getTaskFormValues(){
 }
 
 
-function checkSelectedList(){
-        selectedList.addEventListener("click", () => {
-            console.log(selectedList);
-            let selectedListData = getSelectedList();
-            console.log(selectedListData.title);
-            console.log(selectedListData.description);
-        }) 
-    
+function editListFormValues(){
+  const currentList = getSelectedList();
+  const listTitle = currentList.title;
+  const listDescription = currentList.description;
+  const listTitleFormField = editListTitle;
+  const listDescriptionFormField = editListDescription;
+  listTitleFormField.value = listTitle;
+  listDescriptionFormField.value = listDescription;
 }
 
 

@@ -30,11 +30,11 @@ function updateSelectedList(){
     domNewElements.newAddIcon.src = addIcon;
     domNewElements.newCardIconsLists.appendChild(domNewElements.newAddIcon);
     domNewElements.newPenIcon.type = 'image';
-    domNewElements.newPenIcon.classList.add('icon', 'edit-task');
+    domNewElements.newPenIcon.classList.add('icon', 'edit-list');
     domNewElements.newPenIcon.src = penIcon;
     domNewElements.newCardIconsLists.appendChild(domNewElements.newPenIcon);
     domNewElements.newTrashIcon.type = 'image';
-    domNewElements.newTrashIcon.classList.add('icon', 'delete-task');
+    domNewElements.newTrashIcon.classList.add('icon', 'delete-list');
     domNewElements.newTrashIcon.src = trashIcon;
     domNewElements.newCardIconsLists.appendChild(domNewElements.newTrashIcon);    
 

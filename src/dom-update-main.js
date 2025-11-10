@@ -41,8 +41,11 @@ const listViewDomElements = {
     taskStatusInput: document.querySelector("#task-status-lview"),
     taskSubmitButton: document.querySelector("#task-submit-lview"),
     enterTaskForm: document.querySelector("#enter-task-lview"),
-    taskDialog: document.querySelector(".task-dialog-lview"),
+    taskDialog: document.querySelector("#task-dialog-lview"),
     closeButtonTask: document.querySelector("#task-close-button-lview"),
+    editListDialog: document.querySelector("#edit-list-dialog"),
+    editListTitle: document.querySelector("#edit-list-title"),
+    editListDescription: document.querySelector("#edit-list-description"),
     cardsProjects: document.querySelector(".cards-projects"),
     selectedList: function(){
         let selectedList = document.querySelector(".card");

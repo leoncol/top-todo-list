@@ -22,6 +22,10 @@ body {
     
 }
 
+h1 {
+    text-align: center;
+}
+
 .position-form {
     display: flex;
     flex-direction: column;
@@ -240,7 +244,7 @@ dialog {
     
 }
 
-.task-dialog, .task-dialog-lview {
+#task-dialog, #task-dialog-lview {
     
     left: 40%;
     top: 20%;
