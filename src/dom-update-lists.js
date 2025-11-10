@@ -73,8 +73,8 @@ function checkList(){
 
 function getListIndex(list){
     let nodeArray = Array.from( domElements.lists());
-    sendListNode(nodeArray); // sends DOM node to localStorage
     let index = nodeArray.indexOf(list);
+    sendListNode(nodeArray, index); // sends DOM node to localStorage
     return index;
 }
 
@@ -101,8 +101,9 @@ window.updateList = updateList;
     window.childButtons = childButtons;
 
 
-function sendListNode(listDOMNode){
+function sendListNode(listDOMNode, index){
     localStorage.setItem('nodeList', JSON.stringify(listDOMNode));
+    localStorage.setItem('currentListIndex', JSON.stringify(index));
 }
     
 /*              

@@ -16,5 +16,20 @@ console.log('working;');
 
 function sendListLocalStorage(list){
     localStorage.setItem('currentList', JSON.stringify(list));
+    const index = JSON.parse(localStorage.getItem('currentListIndex'));
+    updateListsFolder(list, index);
     
 }
+
+function updateListsFolder(list, index){
+    const listsFolder = getListsFolderFromLocalStorage();
+    listsFolder[index] = list;
+    localStorage.setItem('listsFolder', JSON.stringify(listsFolder));
+
+}
+
+function getListsFolderFromLocalStorage(){
+    const listsFolder = JSON.parse(localStorage.getItem('listsFolder'));
+    return listsFolder;
+}
+

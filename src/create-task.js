@@ -82,6 +82,11 @@ function getSelectedListFromLocalStorage(){
 
 }
 
+function getListsFolderFromLocalStorage(){
+    const listsFolder = JSON.parse(localStorage.getItem('listsFolder'));
+    return listsFolder;
+}
+
 
 /* 
 function getFromLocalStorage(){
