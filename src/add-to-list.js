@@ -1,5 +1,5 @@
 import { listsFolder, sendToLocalStorage } from "./create-list";
-export {addToList, addToListView};
+export {addToList, addToListView, sendListLocalStorageListView, updateListsFolder, getListsFolderFromLocalStorage};
 function addToList(mainList, list, task){
     list.push(task);
     sendToLocalStorage(mainList);
@@ -8,13 +8,13 @@ function addToList(mainList, list, task){
 
 function addToListView(list, content, newTask){
     content.push(newTask);
-    sendListLocalStorage(list);
+    sendListLocalStorageListView(list);
 
 }
 window.addToList = addToList;
 console.log('working;');
 
-function sendListLocalStorage(list){
+function sendListLocalStorageListView(list){
     localStorage.setItem('currentList', JSON.stringify(list));
     const index = JSON.parse(localStorage.getItem('currentListIndex'));
     updateListsFolder(list, index);

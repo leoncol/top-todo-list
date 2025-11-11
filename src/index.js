@@ -3,7 +3,6 @@ import createNewTask from "./create-task.js";
 import {createNewList} from "./create-list.js";
 import addToList from "./add-to-list.js";
 import deleteFromList from "./delete-from-list.js";
-import changeToList from "./change-to-list.js";
 import setTaskStatus from "./set-task-status.js";
 import setPriority from "./set-priority.js";
 import {updateDOM, domElements, activateCaret, preventButtonBubbling} from "./dom-update-main.js";

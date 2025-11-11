@@ -1,8 +1,11 @@
 import { domElements, listViewDomElements} from "./dom-update-main";
 import { activateCreateNewList, activateCreateNewTask, activateCreateNewTaskListView } from "./controller";
 import { getSelectedList } from "./selected-list";
+import { editList } from "./edit-list";
 import datePicker from "./datepicker";
-export {formEventListeners, clicked, formCreateNewTask, formTaskEventListeners, formCreateNewTaskListsView, formTaskEventListenersListsView, getFormValues, getTaskFormValues}
+export {formEventListeners, clicked, formCreateNewTask, formTaskEventListeners, 
+  formCreateNewTaskListsView, formTaskEventListenersListsView, getFormValues, 
+  getTaskFormValues, editListEventListeners, editListTitle, editListDescription}
 function clicked() {
   console.log('clicked and working');
 }
@@ -19,6 +22,9 @@ let taskSubmitButtonListView = listViewDomElements.taskSubmitButton;
 let editListDialog = listViewDomElements.editListDialog;
 let editListTitle = listViewDomElements.editListTitle;
 let editListDescription = listViewDomElements.editListDescription;
+let editListSubmitButton = listViewDomElements.editListSubmitButton;
+let editListCloseButton = listViewDomElements.editListCloseButton;
+let editListForm = listViewDomElements.editListForm;
 let dialog = domElements.dialog;
 let newList = domElements.newList;
 let closeButton = domElements.closeButton;
@@ -119,6 +125,21 @@ function formTaskEventListenersListsView(){
   })
 }
 
+function editListEventListeners(){
+    editListCloseButton.addEventListener("click", () => {
+      editListDialog.close();
+    })
+
+    editListForm.addEventListener("submit", function (event){
+      event.preventDefault();
+    })
+
+    editListSubmitButton.addEventListener("click", () => {
+      editList();
+      editListDialog.close();
+    })
+}
+
 function getFormValues(){
     const listTitleInputValue = domElements.listTitleInput.value;
     const listDescriptionInputValue = domElements.listDescriptionInput.value
@@ -148,6 +169,10 @@ function editListFormValues(){
   const listDescriptionFormField = editListDescription;
   listTitleFormField.value = listTitle;
   listDescriptionFormField.value = listDescription;
+  
 }
 
 
+function editListChangeValues(){
+
+}

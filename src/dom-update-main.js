@@ -46,6 +46,9 @@ const listViewDomElements = {
     editListDialog: document.querySelector("#edit-list-dialog"),
     editListTitle: document.querySelector("#edit-list-title"),
     editListDescription: document.querySelector("#edit-list-description"),
+    editListCloseButton: document.querySelector("#edit-close-button"),
+    editListSubmitButton: document.querySelector("#edit-save-changes"),
+    editListForm: document.querySelector("#edit-list"),
     cardsProjects: document.querySelector(".cards-projects"),
     selectedList: function(){
         let selectedList = document.querySelector(".card");
