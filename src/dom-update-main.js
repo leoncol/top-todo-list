@@ -21,7 +21,7 @@ const domElements = {
     taskSubmitButton: document.querySelector("#task-submit"),
     enterListForm: document.querySelector("#enter-list"),
     enterTaskForm: document.querySelector("#enter-task"),
-    closeButton: document.querySelector("dialog #close-button"),
+    closeButton: document.querySelector("#close-button"),
     dialog: document.querySelector(".list-dialog"),
     taskDialog: document.querySelector(".task-dialog"),
     closeButtonTask: document.querySelector("#task-close-button"),
@@ -50,6 +50,9 @@ const listViewDomElements = {
     editListSubmitButton: document.querySelector("#edit-save-changes"),
     editListForm: document.querySelector("#edit-list"),
     cardsProjects: document.querySelector(".cards-projects"),
+    deleteListDialog: document.querySelector("#delete-list-dialog"),
+    deleteListButton: document.querySelector("#delete"),
+    deleteListCloseButton: document.querySelector("#delete-close-button"),
     selectedList: function(){
         let selectedList = document.querySelector(".card");
         return selectedList;

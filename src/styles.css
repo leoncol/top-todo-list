@@ -256,6 +256,17 @@ dialog {
     
 }
 
+#delete-list-dialog {
+    
+    left: 40%;
+    top: 20%;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 10px;
+    background: linear-gradient(to right, rgb(255, 0, 0) 0px, rgb(0, 81, 255) 8px, #fff 8px, #fff 100%);
+    box-shadow: rgba(0, 0, 0, 0.315) 2px 2px 5px;
+    
+}
 
 
 

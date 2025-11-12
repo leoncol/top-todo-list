@@ -5,12 +5,13 @@ import { editList } from "./edit-list";
 import datePicker from "./datepicker";
 export {formEventListeners, clicked, formCreateNewTask, formTaskEventListeners, 
   formCreateNewTaskListsView, formTaskEventListenersListsView, getFormValues, 
-  getTaskFormValues, editListEventListeners, editListTitle, editListDescription}
+  getTaskFormValues, editListEventListeners, deleteListEventListeners, editListTitle, editListDescription}
 function clicked() {
   console.log('clicked and working');
 }
 
-
+let listTitle = domElements.listTitleInput;
+let listDescription = domElements.listDescriptionInput;
 let taskDialog = domElements.taskDialog;
 let taskCloseButton = domElements.closeButtonTask;
 let taskForm = domElements.enterTaskForm;
@@ -25,6 +26,9 @@ let editListDescription = listViewDomElements.editListDescription;
 let editListSubmitButton = listViewDomElements.editListSubmitButton;
 let editListCloseButton = listViewDomElements.editListCloseButton;
 let editListForm = listViewDomElements.editListForm;
+let deleteListDialog = listViewDomElements.deleteListDialog;
+let deleteListButton = listViewDomElements.deleteListButton;
+let deleteListCloseButton = listViewDomElements.deleteListCloseButton;
 let dialog = domElements.dialog;
 let newList = domElements.newList;
 let closeButton = domElements.closeButton;
@@ -53,8 +57,13 @@ closeButton.addEventListener("click", () => {
 });
 
 submitButton.addEventListener("click", () => {
-    activateCreateNewList();
-    dialog.close();
+    let validate = validateNewList();
+    if (validate == true){
+      activateCreateNewList();
+      dialog.close();
+    } else {
+      alert('Fill out all fields!');
+    }
   
 });
 
@@ -104,6 +113,10 @@ function formCreateNewTaskListsView(){
           case 'edit-list':
             editListFormValues();
             editListDialog.showModal();
+            break;
+          case 'delete-list':
+            deleteListDialog.showModal();
+            break;
         }
         console.log(className);
 
@@ -120,8 +133,14 @@ function formTaskEventListenersListsView(){
   })
 
   taskSubmitButtonListView.addEventListener("click", () => {
-    activateCreateNewTaskListView();
-    taskDialogListView.close();
+    let validate = validateNewTask();
+    if (validate == true){
+      activateCreateNewTaskListView();
+      taskDialogListView.close();
+    } else {
+      alert('Fill out all fields!');
+    }
+    
   })
 }
 
@@ -135,9 +154,24 @@ function editListEventListeners(){
     })
 
     editListSubmitButton.addEventListener("click", () => {
-      editList();
-      editListDialog.close();
+      let validate = validateEditList();
+      if (validate == true){
+        editList();
+        editListDialog.close();
+      } else {
+        alert('Fill out all fields!');
+      }
+      
     })
+}
+
+function deleteListEventListeners(){
+  deleteListCloseButton.addEventListener("click", () => {
+    deleteListDialog.close();
+  })
+  deleteListButton.addEventListener("click",() => {
+    console.log("Working");
+  } )
 }
 
 function getFormValues(){
@@ -175,4 +209,39 @@ function editListFormValues(){
 
 function editListChangeValues(){
 
+}
+
+function validateNewList(){
+  let listTitleValue = listTitle.value;
+  let listDescriptionValue = listDescription.value;
+  if (listTitleValue == '' || listDescriptionValue == ''){
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function validateNewTask(){
+    let formValues = getTaskFormValues();
+    let title = formValues.taskTitleInputValue;
+    let description = formValues.taskDescriptionInputValue;
+    let date = formValues.taskDateInputValue;
+
+    if (title == '' || description == '' || date == ''){
+      return false;
+    } else {
+      return true;
+    }
+}
+
+function validateEditList(){
+  
+  const title = editListTitle.value;
+  const description = editListDescription.value;
+  
+  if (title == '' || description == ''){
+    return false;
+  } else {
+    return true;
+  }
 }

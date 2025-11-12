@@ -4,6 +4,7 @@ import trashIcon from './assets/trash-bin-icon.svg';
 import penIcon from './assets/pen-icon.svg';
 import { getFromLocalStorage } from "./create-list";
 import { getSelectedList } from "./selected-list";
+import { refreshEventListenersListView } from "./controller";
 export {updateSelectedList, refreshUpdateSelectedList};
 
 
@@ -71,7 +72,9 @@ function refreshUpdateSelectedList(){
     domNewElements.newTrashIcon.type = 'image';
     domNewElements.newTrashIcon.classList.add('icon', 'delete-list');
     domNewElements.newTrashIcon.src = trashIcon;
-    domNewElements.newCardIconsLists.appendChild(domNewElements.newTrashIcon);    
+    domNewElements.newCardIconsLists.appendChild(domNewElements.newTrashIcon);
+    refreshEventListenersListView();
+
 
 }
 
