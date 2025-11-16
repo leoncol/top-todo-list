@@ -5,6 +5,7 @@ import { updateSelectedList } from "./dom-update-selected-list.js";
 import {checkSelectedList} from "./selected-list";
 import { formCreateNewTaskListsView, formTaskEventListenersListsView, editListEventListeners, deleteListEventListeners} from "./dom-form.js";
 import { domElements } from "./dom-update-main.js";
+import { deleteList } from "./delete-list.js";
 import { activateCreateNewTaskListView, activateDomUpdateTasks } from "./controller.js";
 
 updateSelectedList();

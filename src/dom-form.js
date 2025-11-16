@@ -2,6 +2,7 @@ import { domElements, listViewDomElements} from "./dom-update-main";
 import { activateCreateNewList, activateCreateNewTask, activateCreateNewTaskListView } from "./controller";
 import { getSelectedList } from "./selected-list";
 import { editList } from "./edit-list";
+import { deleteList } from "./delete-list.js";
 import datePicker from "./datepicker";
 export {formEventListeners, clicked, formCreateNewTask, formTaskEventListeners, 
   formCreateNewTaskListsView, formTaskEventListenersListsView, getFormValues, 
@@ -171,6 +172,7 @@ function deleteListEventListeners(){
   })
   deleteListButton.addEventListener("click",() => {
     console.log("Working");
+    deleteList();
   } )
 }
 

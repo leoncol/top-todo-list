@@ -27,11 +27,14 @@ const domElements = {
     closeButtonTask: document.querySelector("#task-close-button"),
     button: document.querySelector(".button-task"),
     toggler: document.getElementsByClassName("caret"),
+    home: document.querySelector("#home"),
     lists: function(){
         let lists = document.querySelectorAll(".anchor-list");
         return lists;
     }
 };
+
+window.domElements = domElements;
 
 const listViewDomElements = {
     taskTitleInput: document.querySelector("#task-title-lview"),
