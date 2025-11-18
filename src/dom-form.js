@@ -3,10 +3,12 @@ import { activateCreateNewList, activateCreateNewTask, activateCreateNewTaskList
 import { getSelectedList } from "./selected-list";
 import { editList } from "./edit-list";
 import { deleteList } from "./delete-list.js";
+import { checkTasks, getTask } from "./dom-update-tasks.js";
 import datePicker from "./datepicker";
+import { getSelectedTaskFromLocalStorage } from "./create-task.js";
 export {formEventListeners, clicked, formCreateNewTask, formTaskEventListeners, 
   formCreateNewTaskListsView, formTaskEventListenersListsView, getFormValues, 
-  getTaskFormValues, editListEventListeners, deleteListEventListeners, editListTitle, editListDescription}
+  getTaskFormValues, editListEventListeners, deleteListEventListeners, editListTitle, editListDescription, formEditTaskListsView}
 function clicked() {
   console.log('clicked and working');
 }
@@ -30,6 +32,14 @@ let editListForm = listViewDomElements.editListForm;
 let deleteListDialog = listViewDomElements.deleteListDialog;
 let deleteListButton = listViewDomElements.deleteListButton;
 let deleteListCloseButton = listViewDomElements.deleteListCloseButton;
+let editTaskDialog = listViewDomElements.editTaskDialog;
+let editTaskTitle = listViewDomElements.editTaskTitle;
+let editTaskDescription = listViewDomElements.editTaskDescription;
+let editTaskDate = listViewDomElements.editTaskDate;
+let editTaskPriority = listViewDomElements.editTaskPriority;
+let editTaskStatus = listViewDomElements.editTaskStatus;
+let editTaskSubmitButton = listViewDomElements.editTaskSubmitButton;
+let closeButtonEditTask = listViewDomElements.closeButtonEditTask;
 let dialog = domElements.dialog;
 let newList = domElements.newList;
 let closeButton = domElements.closeButton;
@@ -176,6 +186,43 @@ function deleteListEventListeners(){
   } )
 }
 
+function formEditTaskListsView(){
+  let selectedTask = listViewDomElements.listTasks();
+  selectedTask.forEach(task =>{
+    task.addEventListener("click", (event) => {
+      let type = event.target;
+      let className = type.classList[1]; // we check the className by checking the 1 slot since elements will always have two classes the icon general class
+      // and the specific class.
+      switch (className){
+        case 'edit-task':
+          datePicker();
+          editTaskFormValues();
+          editTaskDialog.showModal();
+          console.log('working');
+          break;
+        case 'delete-task':
+          console.log('working');
+          // editListFormValues();
+          // editListDialog.showModal();
+          break;
+      }
+  })
+   /* function checkTasks(){
+    let tasks = listViewDomElements.listTasks();
+    tasks.forEach(task =>{
+        task.addEventListener("click", () => {
+            console.log(task);
+            let taskIndex = getTaskIndex(task);
+            let selectedList = getSelectedListFromLocalStorage();
+            console.log(selectedList.content[taskIndex]);
+            return selectedList.content[taskIndex];
+        }) 
+    })
+} */
+
+  })
+}
+
 function getFormValues(){
     const listTitleInputValue = domElements.listTitleInput.value;
     const listDescriptionInputValue = domElements.listDescriptionInput.value
@@ -206,6 +253,45 @@ function editListFormValues(){
   listTitleFormField.value = listTitle;
   listDescriptionFormField.value = listDescription;
   
+}
+
+function editTaskFormValues(){
+  const currentTask = getSelectedTaskFromLocalStorage();
+  const taskTitle = currentTask.title;
+  const taskDescription = currentTask.description;
+  const taskDueDate = currentTask.dueDate;
+  const taskPriority = currentTask.priority;
+  const taskStatus = currentTask.status;
+  const currentTaskTitle = editTaskTitle;
+  const currentTaskDescription = editTaskDescription;
+  const currentTaskDueDate = editTaskDate;
+  const currentTaskPriority = editTaskPriority;
+  const currentTaskStatus = editTaskStatus;
+  currentTaskTitle.value = taskTitle;
+  currentTaskDescription.value = taskDescription;
+  currentTaskDueDate.value = taskDueDate;
+  switch (taskPriority){
+    case 'Low':
+      currentTaskPriority.value = 0;
+      break;
+    case 'High':
+      currentTaskPriority.value = 1;
+      break;
+  }
+  switch (taskStatus){
+    case 'To do':
+      currentTaskStatus.value = 0;
+      break;
+    case 'Doing':
+      currentTaskStatus.value = 1;
+      break;
+    case 'Done':
+      currentTaskStatus.value = 2;
+      break;
+  }
+   /*  <option value="0">To do</option>
+                                    <option value="1">Doing</option>
+                                    <option value="2">Done</option> */
 }
 
 

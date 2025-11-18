@@ -1,4 +1,4 @@
-export {createNewTask, createNewTaskListView, getSelectedListFromLocalStorage}
+export {createNewTask, createNewTaskListView, getSelectedListFromLocalStorage, sendSelectedTaskToLocalStorage, getSelectedTaskFromLocalStorage}
 import {addToList, addToListView} from "./add-to-list";
 import { getFromLocalStorage, sendToLocalStorage } from "./create-list";
 import { format } from "date-fns";
@@ -80,6 +80,15 @@ function getSelectedListFromLocalStorage(){
     const storedSelectedList = JSON.parse(localStorage.getItem('currentList'));
     return storedSelectedList;
 
+}
+
+function sendSelectedTaskToLocalStorage(selectedTask){
+    localStorage.setItem('selectedTask', JSON.stringify(selectedTask));
+}
+
+function getSelectedTaskFromLocalStorage(){
+    const selectedTask = JSON.parse(localStorage.getItem('selectedTask'));
+    return selectedTask;
 }
 
 function getListsFolderFromLocalStorage(){

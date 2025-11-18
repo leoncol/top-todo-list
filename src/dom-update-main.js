@@ -56,6 +56,16 @@ const listViewDomElements = {
     deleteListDialog: document.querySelector("#delete-list-dialog"),
     deleteListButton: document.querySelector("#delete"),
     deleteListCloseButton: document.querySelector("#delete-close-button"),
+    editTaskDialog: document.querySelector("#edit-task-dialog-lview"),
+    editTaskTitle: document.querySelector("#edit-task-title-lview"),
+    editTaskDescription: document.querySelector("#edit-task-description-lview"),
+    editTaskDate: document.querySelector("#edit-task-date-lview"),
+    editTaskPriority: document.querySelector("#edit-task-priority-lview"),
+    editTaskStatus: document.querySelector("#edit-task-status-lview"),
+    editTaskSubmitButton: document.querySelector("#edit-task-submit-lview"),
+    editTaskForm: document.querySelector("#edit-task-lview"),
+    closeButtonEditTask: document.querySelector("#edit-task-close-button-lview"),
+
     selectedList: function(){
         let selectedList = document.querySelector(".card");
         return selectedList;

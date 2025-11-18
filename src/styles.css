@@ -256,7 +256,7 @@ dialog {
     
 }
 
-#task-dialog, #task-dialog-lview {
+#task-dialog, #task-dialog-lview, #edit-task-dialog-lview {
     
     left: 40%;
     top: 20%;

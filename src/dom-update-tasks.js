@@ -5,7 +5,8 @@ import trashIcon from './assets/trash-bin-icon.svg';
 import { listViewDomElements, createNewdomElements,  updateChildButtons, preventButtonBubbling,  } from "./dom-update-main";
 import { handleLocalStorage, handleLocalStorageListView} from './controller';
 import { getFromLocalStorage, getListLocalStorage} from './create-list';
-export {domUpdateTasks, checkList} 
+import { getSelectedListFromLocalStorage, sendSelectedTaskToLocalStorage } from './create-task';
+export {domUpdateTasks, checkTasks, getTask} 
 
 
 
@@ -166,35 +167,37 @@ function updateTasks(){
     return tasks;
 }
 
-function checkList(){
-    let lists = domElements.lists();
-    lists.forEach(list =>{
-        list.addEventListener("click", () => {
-            console.log(list);
-            let getIndex = getListIndex(list);
-            getListLocalStorage(getIndex);
+function checkTasks(){
+    let tasks = listViewDomElements.listTasks();
+    tasks.forEach(task =>{
+        task.addEventListener("click", () => {
+            console.log(task);
+            let taskIndex = getTaskIndex(task);
+            let selectedList = getSelectedListFromLocalStorage();
+            let selectedTask = selectedList.content[taskIndex]
+            sendSelectedTaskToLocalStorage(selectedTask)
+            
         }) 
     })
 }
 
-function getListIndex(list){
-    let nodeArray = Array.from( domElements.lists());
-    sendListNode(nodeArray); // sends DOM node to localStorage
-    let index = nodeArray.indexOf(list);
+function getTask(){
+    let task = listViewDomElements.listTasks();
+    let taskIndex = getTaskIndex(task);
+    let selectedList = getSelectedListFromLocalStorage();
+    let selectedTask = selectedList.content[taskIndex];
+    return selectedTask;
+}
+
+function getTaskIndex(task){
+    let nodeArray = Array.from( listViewDomElements.listTasks());
+    let index = nodeArray.indexOf(task);
+
     return index;
 }
 
 
-/* function sendToLocalStorage(){
-    let checkLocalStorage = getFromLocalStorage();
-    localStorage.setItem('listsFolder', JSON.stringify(checkLocalStorage));
-    
-    
-} */
 
-
-
-window.updateList = updateList; 
 
  function refreshTasks(){
         let tasks = updateTasks();
