@@ -1,11 +1,20 @@
 import { format } from "date-fns";
 
-export default
+export {datePicker, editTaskDatePicker}
 
-function setMinDate(){
+function datePicker(){
     const datePicker = document.getElementById("task-date-lview");
     const today = format(new Date(), "yyyy-MM-dd");
     datePicker.setAttribute("min", today);
     
     
 }
+
+function editTaskDatePicker(){
+    const datePicker = document.getElementById("edit-task-date-lview");
+    const today = format(new Date(), "yyyy-MM-dd");
+    datePicker.setAttribute("min", today);
+    
+    
+}
+

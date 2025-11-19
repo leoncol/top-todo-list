@@ -3,9 +3,9 @@ import penIcon from './assets/pen-icon.svg';
 import trashIcon from './assets/trash-bin-icon.svg';
 
 import { listViewDomElements, createNewdomElements,  updateChildButtons, preventButtonBubbling,  } from "./dom-update-main";
-import { handleLocalStorage, handleLocalStorageListView} from './controller';
+import { handleLocalStorage, handleLocalStorageListView, refreshTasksEventListenersListView} from './controller';
 import { getFromLocalStorage, getListLocalStorage} from './create-list';
-import { getSelectedListFromLocalStorage, sendSelectedTaskToLocalStorage } from './create-task';
+import { getSelectedListFromLocalStorage, sendSelectedTaskIndexToLocalStorage, sendSelectedTaskToLocalStorage } from './create-task';
 export {domUpdateTasks, checkTasks, getTask} 
 
 
@@ -93,6 +93,8 @@ function domUpdateTasks(){
         domNewElements.newTrashIcon.classList.add('icon', 'delete-task');
         domNewElements.newTrashIcon.src = trashIcon;
         domNewElements.newCardIconsLists.appendChild(domNewElements.newTrashIcon);
+        refreshTasksEventListenersListView();
+
        /* 
 
 
@@ -175,7 +177,8 @@ function checkTasks(){
             let taskIndex = getTaskIndex(task);
             let selectedList = getSelectedListFromLocalStorage();
             let selectedTask = selectedList.content[taskIndex]
-            sendSelectedTaskToLocalStorage(selectedTask)
+            sendSelectedTaskToLocalStorage(selectedTask);
+            sendSelectedTaskIndexToLocalStorage(taskIndex);
             
         }) 
     })

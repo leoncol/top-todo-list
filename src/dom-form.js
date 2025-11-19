@@ -1,14 +1,14 @@
 import { domElements, listViewDomElements} from "./dom-update-main";
-import { activateCreateNewList, activateCreateNewTask, activateCreateNewTaskListView } from "./controller";
+import { activateCreateNewList, activateCreateNewTask, activateCreateNewTaskListView, activateEditTaskListView } from "./controller";
 import { getSelectedList } from "./selected-list";
 import { editList } from "./edit-list";
 import { deleteList } from "./delete-list.js";
 import { checkTasks, getTask } from "./dom-update-tasks.js";
-import datePicker from "./datepicker";
+import {datePicker, editTaskDatePicker} from "./datepicker";
 import { getSelectedTaskFromLocalStorage } from "./create-task.js";
 export {formEventListeners, clicked, formCreateNewTask, formTaskEventListeners, 
   formCreateNewTaskListsView, formTaskEventListenersListsView, getFormValues, 
-  getTaskFormValues, editListEventListeners, deleteListEventListeners, editListTitle, editListDescription, formEditTaskListsView}
+  getTaskFormValues, editListEventListeners, deleteListEventListeners, editListTitle, editListDescription, formEditTaskListsView, getEditTaskFormValues, formEditTaskEventListenersListsView}
 function clicked() {
   console.log('clicked and working');
 }
@@ -33,6 +33,7 @@ let deleteListDialog = listViewDomElements.deleteListDialog;
 let deleteListButton = listViewDomElements.deleteListButton;
 let deleteListCloseButton = listViewDomElements.deleteListCloseButton;
 let editTaskDialog = listViewDomElements.editTaskDialog;
+let editTaskForm = listViewDomElements.editTaskForm;
 let editTaskTitle = listViewDomElements.editTaskTitle;
 let editTaskDescription = listViewDomElements.editTaskDescription;
 let editTaskDate = listViewDomElements.editTaskDate;
@@ -195,33 +196,44 @@ function formEditTaskListsView(){
       // and the specific class.
       switch (className){
         case 'edit-task':
-          datePicker();
           editTaskFormValues();
+          editTaskDatePicker();
           editTaskDialog.showModal();
           console.log('working');
           break;
         case 'delete-task':
           console.log('working');
-          // editListFormValues();
-          // editListDialog.showModal();
           break;
       }
   })
-   /* function checkTasks(){
-    let tasks = listViewDomElements.listTasks();
-    tasks.forEach(task =>{
-        task.addEventListener("click", () => {
-            console.log(task);
-            let taskIndex = getTaskIndex(task);
-            let selectedList = getSelectedListFromLocalStorage();
-            console.log(selectedList.content[taskIndex]);
-            return selectedList.content[taskIndex];
-        }) 
-    })
-} */
+ 
 
   })
 }
+
+
+function formEditTaskEventListenersListsView(){
+  closeButtonEditTask.addEventListener("click", () => {
+    editTaskDialog.close();
+  })
+
+  editTaskForm.addEventListener("submit", function (event){
+    event.preventDefault();
+  })
+
+  editTaskSubmitButton.addEventListener("click", () => {
+    let validate = validateEditTask();
+    if (validate == true){
+      activateEditTaskListView();
+      editTaskDialog.close();
+    } else {
+      alert('Fill out all fields!');
+    }
+    
+  })
+}
+
+
 
 function getFormValues(){
     const listTitleInputValue = domElements.listTitleInput.value;
@@ -242,6 +254,17 @@ function getTaskFormValues(){
 
     return {taskTitleInputValue, taskDescriptionInputValue, taskDateInputValue, taskPriorityInputValue, taskStatusInputValue}
 }
+
+function getEditTaskFormValues(){
+  const editTaskTitle = listViewDomElements.editTaskTitle.value;
+  const editTaskDescription = listViewDomElements.editTaskDescription.value;
+  const editTaskDate = listViewDomElements.editTaskDate.value;
+  const editTaskPriority = listViewDomElements.editTaskPriority.value;
+  const editTaskStatus = listViewDomElements.editTaskStatus.value;
+
+  return {editTaskTitle, editTaskDescription, editTaskDate, editTaskPriority, editTaskStatus}
+}
+
 
 
 function editListFormValues(){
@@ -320,6 +343,19 @@ function validateNewTask(){
     } else {
       return true;
     }
+}
+
+function validateEditTask(){
+  let editFormValues = getEditTaskFormValues();
+  let title = editFormValues.editTaskTitle;
+  let description = editFormValues.editTaskDescription;
+  let date = editFormValues.editTaskDate;
+
+  if (title == '' || description == '' || date == ''){
+    return false;
+  } else {
+    return true;
+  }
 }
 
 function validateEditList(){
