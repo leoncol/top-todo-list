@@ -268,7 +268,7 @@ dialog {
     
 }
 
-#delete-list-dialog {
+#delete-list-dialog, #delete-task-dialog {
     
     left: 40%;
     top: 20%;

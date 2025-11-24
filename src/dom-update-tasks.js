@@ -6,7 +6,7 @@ import { listViewDomElements, createNewdomElements,  updateChildButtons, prevent
 import { handleLocalStorage, handleLocalStorageListView, refreshTasksEventListenersListView} from './controller';
 import { getFromLocalStorage, getListLocalStorage} from './create-list';
 import { getSelectedListFromLocalStorage, sendSelectedTaskIndexToLocalStorage, sendSelectedTaskToLocalStorage } from './create-task';
-export {domUpdateTasks, checkTasks, getTask} 
+export {domUpdateTasks, getTaskIndex} 
 
 
 
@@ -169,7 +169,7 @@ function updateTasks(){
     return tasks;
 }
 
-function checkTasks(){
+/* function checkTasks(){
     let tasks = listViewDomElements.listTasks();
     tasks.forEach(task =>{
         task.addEventListener("click", () => {
@@ -182,7 +182,7 @@ function checkTasks(){
             
         }) 
     })
-}
+} */
 
 function getTask(){
     let task = listViewDomElements.listTasks();

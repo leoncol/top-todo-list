@@ -3,12 +3,13 @@ import { activateCreateNewList, activateCreateNewTask, activateCreateNewTaskList
 import { getSelectedList } from "./selected-list";
 import { editList } from "./edit-list";
 import { deleteList } from "./delete-list.js";
-import { checkTasks, getTask } from "./dom-update-tasks.js";
 import {datePicker, editTaskDatePicker} from "./datepicker";
-import { getSelectedTaskFromLocalStorage } from "./create-task.js";
+import { getSelectedTaskFromLocalStorage, getSelectedListFromLocalStorage, sendSelectedTaskIndexToLocalStorage, sendSelectedTaskToLocalStorage } from "./create-task.js";
+import { getTaskIndex } from "./dom-update-tasks.js";
 export {formEventListeners, clicked, formCreateNewTask, formTaskEventListeners, 
   formCreateNewTaskListsView, formTaskEventListenersListsView, getFormValues, 
-  getTaskFormValues, editListEventListeners, deleteListEventListeners, editListTitle, editListDescription, formEditTaskListsView, getEditTaskFormValues, formEditTaskEventListenersListsView}
+  getTaskFormValues, editListEventListeners, deleteListEventListeners, editListTitle, editListDescription, formEditTaskListsView, getEditTaskFormValues, formEditTaskEventListenersListsView,
+formDeleteTaskEventListenersListsView}
 function clicked() {
   console.log('clicked and working');
 }
@@ -41,6 +42,9 @@ let editTaskPriority = listViewDomElements.editTaskPriority;
 let editTaskStatus = listViewDomElements.editTaskStatus;
 let editTaskSubmitButton = listViewDomElements.editTaskSubmitButton;
 let closeButtonEditTask = listViewDomElements.closeButtonEditTask;
+let deleteTaskDialog = listViewDomElements.deleteTaskDialog;
+let deleteTaskButton = listViewDomElements.deleteTaskButton;
+let deleteTaskCloseButton = listViewDomElements.deleteTaskCloseButton;
 let dialog = domElements.dialog;
 let newList = domElements.newList;
 let closeButton = domElements.closeButton;
@@ -191,6 +195,11 @@ function formEditTaskListsView(){
   let selectedTask = listViewDomElements.listTasks();
   selectedTask.forEach(task =>{
     task.addEventListener("click", (event) => {
+       let taskIndex = getTaskIndex(task);
+       let selectedList = getSelectedListFromLocalStorage();
+       let selectedTask = selectedList.content[taskIndex]
+       sendSelectedTaskToLocalStorage(selectedTask);
+       sendSelectedTaskIndexToLocalStorage(taskIndex);
       let type = event.target;
       let className = type.classList[1]; // we check the className by checking the 1 slot since elements will always have two classes the icon general class
       // and the specific class.
@@ -202,6 +211,7 @@ function formEditTaskListsView(){
           console.log('working');
           break;
         case 'delete-task':
+          deleteTaskDialog.showModal();
           console.log('working');
           break;
       }
@@ -232,6 +242,20 @@ function formEditTaskEventListenersListsView(){
     
   })
 }
+
+function formDeleteTaskEventListenersListsView(){
+  deleteTaskCloseButton.addEventListener("click", () => {
+    deleteTaskDialog.close();
+  })
+
+  deleteTaskButton.addEventListener("submit", function (event){
+    event.preventDefault();
+  })
+
+  
+}
+
+
 
 
 
