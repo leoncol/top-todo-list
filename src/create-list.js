@@ -1,5 +1,5 @@
 import {getFormValues} from "./dom-form"
-export {createNewList, listsFolder, sendToLocalStorage, getFromLocalStorage, addTaskToThisList, getListLocalStorage}; 
+export {createNewList, listsFolder, sendToLocalStorage, getFromLocalStorage, addTaskToThisList, sendListLocalStorage}; 
 
 const listsFolder = [];
 
@@ -73,21 +73,11 @@ function createNewList() {
 
 }
 
-function getListLocalStorage(index){
-    addTaskToThisList.MainListCopy = getFromLocalStorage();
-    addTaskToThisList.listCopy = addTaskToThisList.MainListCopy[index];
-    let list = addTaskToThisList.listCopy;
-    let mainList = addTaskToThisList.MainListCopy;
-    console.log(list);
-    console.log(mainList);
-    
-    sendListLocalStorage(list);
-    console.log(list.title);
-    console.log(list.description);
-    console.log(list.content);
-}
 
-function sendListLocalStorage(list){
+
+function sendListLocalStorage(index){
+    let listsFolder = getFromLocalStorage();
+    let list = listsFolder[index];
     localStorage.setItem('currentList', JSON.stringify(list));
     
 }

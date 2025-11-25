@@ -2,7 +2,7 @@ import addIcon from './assets/add-icon.svg';
 
 import { domElements, createNewdomElements, updateChildButtons, preventButtonBubbling, lists } from "./dom-update-main";
 import { handleLocalStorage} from './controller';
-import { getFromLocalStorage, getListLocalStorage} from './create-list';
+import { getFromLocalStorage, sendListLocalStorage} from './create-list';
 export {domUpdateLists, checkList, updateList} 
 
 
@@ -66,7 +66,7 @@ function checkList(){
         list.addEventListener("click", () => {
             console.log(list);
             let getIndex = getListIndex(list);
-            getListLocalStorage(getIndex);
+            sendListLocalStorage(getIndex);
         }) 
     })
 }
@@ -74,7 +74,7 @@ function checkList(){
 function getListIndex(list){
     let nodeArray = Array.from( domElements.lists());
     let index = nodeArray.indexOf(list);
-    sendListNode(nodeArray, index); // sends DOM node to localStorage
+    sendSelectedListIndex(index); // sends DOM node to localStorage
     return index;
 }
 
@@ -101,8 +101,7 @@ window.updateList = updateList;
     window.childButtons = childButtons;
 
 
-function sendListNode(listDOMNode, index){
-    localStorage.setItem('nodeList', JSON.stringify(listDOMNode));
+function sendSelectedListIndex(index){
     localStorage.setItem('currentListIndex', JSON.stringify(index));
 }
     

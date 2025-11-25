@@ -6,9 +6,10 @@ import {domUpdateLists, checkList, updateList} from "./dom-update-lists.js";
 import { deleteListEventListeners, formCreateNewTask, formCreateNewTaskListsView, formEditTaskListsView } from "./dom-form.js";
 import { domUpdateTasks } from "./dom-update-tasks.js";
 import { editTaskListView } from "./edit-task.js";
+import { deleteTask } from "./delete-task.js";
 export {activateCreateNewList, displayListsInfo, handleLocalStorage, activateCreateNewTask, 
     activateCreateNewTaskListView, handleLocalStorageListView, activateDomUpdateTasks, refreshEventListenersListView,
-activateEditTaskListView, refreshTasksEventListenersListView};
+activateEditTaskListView, refreshTasksEventListenersListView, activateDeleteTask};
 
 
 
@@ -50,6 +51,11 @@ function refreshTasksEventListenersListView(){
     formEditTaskListsView();
 }
 
+
+function activateDeleteTask(){
+    deleteTask();
+    domUpdateTasks();
+}
 
 
 

@@ -23,7 +23,7 @@ const domElements = {
     enterTaskForm: document.querySelector("#enter-task"),
     closeButton: document.querySelector("#close-button"),
     dialog: document.querySelector(".list-dialog"),
-    taskDialog: document.querySelector(".task-dialog"),
+    taskDialog: document.querySelector("#task-dialog"),
     closeButtonTask: document.querySelector("#task-close-button"),
     button: document.querySelector(".button-task"),
     toggler: document.getElementsByClassName("caret"),

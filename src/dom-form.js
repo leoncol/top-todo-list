@@ -1,5 +1,5 @@
 import { domElements, listViewDomElements} from "./dom-update-main";
-import { activateCreateNewList, activateCreateNewTask, activateCreateNewTaskListView, activateEditTaskListView } from "./controller";
+import { activateCreateNewList, activateCreateNewTask, activateCreateNewTaskListView, activateEditTaskListView, activateDeleteTask } from "./controller";
 import { getSelectedList } from "./selected-list";
 import { editList } from "./edit-list";
 import { deleteList } from "./delete-list.js";
@@ -76,6 +76,7 @@ submitButton.addEventListener("click", () => {
     let validate = validateNewList();
     if (validate == true){
       activateCreateNewList();
+      enterListForm.reset();
       dialog.close();
     } else {
       alert('Fill out all fields!');
@@ -110,7 +111,15 @@ function formTaskEventListeners(){
   })
 
   taskSubmitButton.addEventListener("submit", () => {
-    activateCreateNewTask();
+    let validate = validateNewTaskHome();
+    if (validate == true){
+      activateCreateNewTask();
+      taskFormListView.reset();
+      taskDialogListView.close();
+    } else {
+      alert('Fill out all fields!');
+    }
+    taskForm.reset();
     taskDialog.close();
   })
 }
@@ -152,6 +161,7 @@ function formTaskEventListenersListsView(){
     let validate = validateNewTask();
     if (validate == true){
       activateCreateNewTaskListView();
+      taskFormListView.reset();
       taskDialogListView.close();
     } else {
       alert('Fill out all fields!');
@@ -244,6 +254,7 @@ function formEditTaskEventListenersListsView(){
 }
 
 function formDeleteTaskEventListenersListsView(){
+
   deleteTaskCloseButton.addEventListener("click", () => {
     deleteTaskDialog.close();
   })
@@ -251,6 +262,12 @@ function formDeleteTaskEventListenersListsView(){
   deleteTaskButton.addEventListener("submit", function (event){
     event.preventDefault();
   })
+
+  deleteTaskButton.addEventListener("click",() => {
+    console.log("Working");
+    activateDeleteTask();
+    deleteTaskDialog.close();
+  } )
 
   
 }
@@ -277,6 +294,19 @@ function getTaskFormValues(){
     const taskStatusInputValue = listViewDomElements.taskStatusInput.value;
 
     return {taskTitleInputValue, taskDescriptionInputValue, taskDateInputValue, taskPriorityInputValue, taskStatusInputValue}
+}
+
+function getTaskFormValuesHome(){
+    const taskTitleInputValueHome = domElements.taskTitleInput.value;
+    const taskDescriptionInputValueHome = domElements.taskDescriptionInput.value;
+    const taskDateInputValueHome = domElements.taskDateInput.value;
+    const taskPriorityInputValueHome = domElements.taskPriorityInput.value;
+    const taskStatusInputValueHome = domElements.taskStatusInput.value;
+
+    return {taskTitleInputValueHome, taskDescriptionInputValueHome, taskDateInputValueHome, taskPriorityInputValueHome, taskStatusInputValueHome}
+
+
+     
 }
 
 function getEditTaskFormValues(){
@@ -363,6 +393,19 @@ function validateNewTask(){
     let date = formValues.taskDateInputValue;
 
     if (title == '' || description == '' || date == ''){
+      return false;
+    } else {
+      return true;
+    }
+}
+
+function validateNewTaskHome(){
+  let formValuesHome = getTaskFormValuesHome();
+  let title = formValuesHome.taskTitleInputValueHome;
+  let description = formValuesHome.taskDescriptionInputValueHome;
+  let date = formValuesHome.taskDateInputValueHome;
+
+   if (title == '' || description == '' || date == ''){
       return false;
     } else {
       return true;
