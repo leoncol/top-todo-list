@@ -104,6 +104,7 @@ window.updateList = updateList;
 function sendSelectedListIndex(index){
     localStorage.setItem('currentListIndex', JSON.stringify(index));
 }
+
     
 /*              
                         <button class="button-task" type="button">

@@ -1,11 +1,10 @@
-export {createNewTask, createNewTaskListView, getSelectedListFromLocalStorage, sendSelectedTaskToLocalStorage, getSelectedTaskFromLocalStorage, 
-    sendSelectedTaskIndexToLocalStorage, getCurrentList, getSelectedTaskIndexFromLocalStorage
-}
 import {addToList, addToListView} from "./add-to-list";
 import { getFromLocalStorage, sendToLocalStorage } from "./create-list";
 import { format } from "date-fns";
-import { getTaskFormValues } from "./dom-form";
-
+import { getTaskFormValues, getTaskFormValuesHome } from "./dom-form";
+export {createNewTask, createNewTaskListView, getSelectedListFromLocalStorage, sendSelectedTaskToLocalStorage, getSelectedTaskFromLocalStorage, 
+    sendSelectedTaskIndexToLocalStorage, getCurrentList, getSelectedTaskIndexFromLocalStorage
+}
 
 class NewTask {
     constructor(title, description, dueDate, priority, status){
@@ -51,9 +50,16 @@ window.getCurrentList = getCurrentList();
 
 window.getListContent = getListContent;
 
-function createNewTask(title, description, dueDate, priority, status, list) {
+function createNewTask() {
     let mainList = getListContent();
-    let listContent = mainList[list].content;
+    let listIndex = getSelectedListIndex();
+    let listContent = mainList[listIndex].content;
+    let taskFormValuesHome = getTaskFormValuesHome();
+    let title = taskFormValuesHome.taskTitleInputValueHome;
+    let description = taskFormValuesHome.taskDescriptionInputValueHome;
+    let dueDate = taskFormValuesHome.taskDateInputValueHome;
+    let priority = parseInt(taskFormValuesHome.taskPriorityInputValueHome);
+    let status = parseInt(taskFormValuesHome.taskStatusInputValueHome);
     let newTask = new NewTask(title, description, dueDate, priority, status)
     
     addToList(mainList,listContent, newTask);
@@ -64,12 +70,12 @@ function createNewTask(title, description, dueDate, priority, status, list) {
 function createNewTaskListView() {
     let currentList = getCurrentList();
     let content = currentList.content;
-    let TaskFormValues = getTaskFormValues();
-    let title = TaskFormValues.taskTitleInputValue;
-    let description = TaskFormValues.taskDescriptionInputValue;
-    let dueDate = TaskFormValues.taskDateInputValue;
-    let priority = parseInt(TaskFormValues.taskPriorityInputValue);
-    let status = parseInt(TaskFormValues.taskStatusInputValue);
+    let taskFormValues = getTaskFormValues();
+    let title = taskFormValues.taskTitleInputValue;
+    let description = taskFormValues.taskDescriptionInputValue;
+    let dueDate = taskFormValues.taskDateInputValue;
+    let priority = parseInt(taskFormValues.taskPriorityInputValue);
+    let status = parseInt(taskFormValues.taskStatusInputValue);
     let newTask = new NewTask(title, description, dueDate, priority, status);
     
     addToListView(currentList, content, newTask);
@@ -105,6 +111,12 @@ function getSelectedTaskFromLocalStorage(){
 function getListsFolderFromLocalStorage(){
     const listsFolder = JSON.parse(localStorage.getItem('listsFolder'));
     return listsFolder;
+}
+
+
+function getSelectedListIndex(){
+    let currentListIndex = JSON.parse(localStorage.getItem('currentListIndex'));
+    return currentListIndex;
 }
 
 

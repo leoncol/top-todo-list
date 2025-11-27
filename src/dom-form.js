@@ -3,12 +3,12 @@ import { activateCreateNewList, activateCreateNewTask, activateCreateNewTaskList
 import { getSelectedList } from "./selected-list";
 import { editList } from "./edit-list";
 import { deleteList } from "./delete-list.js";
-import {datePicker, editTaskDatePicker} from "./datepicker";
+import {datePicker, editTaskDatePicker, datePickerHome} from "./datepicker";
 import { getSelectedTaskFromLocalStorage, getSelectedListFromLocalStorage, sendSelectedTaskIndexToLocalStorage, sendSelectedTaskToLocalStorage } from "./create-task.js";
 import { getTaskIndex } from "./dom-update-tasks.js";
 export {formEventListeners, clicked, formCreateNewTask, formTaskEventListeners, 
   formCreateNewTaskListsView, formTaskEventListenersListsView, getFormValues, 
-  getTaskFormValues, editListEventListeners, deleteListEventListeners, editListTitle, editListDescription, formEditTaskListsView, getEditTaskFormValues, formEditTaskEventListenersListsView,
+  getTaskFormValues, getTaskFormValuesHome, editListEventListeners, deleteListEventListeners, editListTitle, editListDescription, formEditTaskListsView, getEditTaskFormValues, formEditTaskEventListenersListsView,
 formDeleteTaskEventListenersListsView}
 function clicked() {
   console.log('clicked and working');
@@ -93,6 +93,7 @@ function formCreateNewTask(){
     list.addEventListener("click", (event) => {
       let type = event.target;
       if (type.tagName === 'INPUT'){
+        datePickerHome();
         taskDialog.showModal();
         
       }
@@ -110,17 +111,16 @@ function formTaskEventListeners(){
     event.preventDefault();
   })
 
-  taskSubmitButton.addEventListener("submit", () => {
+  taskSubmitButton.addEventListener("click", () => {
     let validate = validateNewTaskHome();
     if (validate == true){
       activateCreateNewTask();
-      taskFormListView.reset();
-      taskDialogListView.close();
+      taskForm.reset();
+      taskDialog.close();
     } else {
       alert('Fill out all fields!');
     }
-    taskForm.reset();
-    taskDialog.close();
+    
   })
 }
 
