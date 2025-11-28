@@ -211,6 +211,7 @@ h1 {
 .task {
     color: white;
     margin-left: 2rem;
+    cursor: pointer;
 }
 
 .caret {

@@ -1,8 +1,9 @@
-import caretActivation from "./caret";
+import {caretActivation, caretEventListener} from "./caret";
 export {domElements, listViewDomElements, activateCaret, createNewdomElements, preventButtonBubbling, updateChildButtons};
 
 function activateCaret(){
     caretActivation();
+    caretEventListener();
 }
 
 
@@ -28,9 +29,14 @@ const domElements = {
     button: document.querySelector(".button-task"),
     toggler: document.getElementsByClassName("caret"),
     home: document.querySelector("#home"),
+    nested: document.querySelector(".nested"),
     lists: function(){
         let lists = document.querySelectorAll(".anchor-list");
         return lists;
+    },
+    caretTasks: function(){
+        let caretTasks = document.querySelectorAll(".task");
+        return caretTasks;
     }
 };
 
@@ -121,13 +127,16 @@ function createNewdomElements(){
     const newPriority = document.createElement("p");
     const newPriotityTitle = document.createElement("p");
     const newPriorityValue = document.createElement("p");
+    const newCaretTask = document.createElement('li');
+    
 
 
 
 
     return {newAnchor, newButton, newCard, newCardTextContainer, newCardTitle, 
         newCardText, newIconContainer, newCardIconsLists, newAddIcon, newPenIcon, newTrashIcon, newMetadata,
-    newStatus, newStatusTitle, newStatusValue, newDueDate, newDueDateTitle, newDueDateValue, newPriority, newPriotityTitle, newPriorityValue};
+    newStatus, newStatusTitle, newStatusValue, newDueDate, newDueDateTitle, newDueDateValue, newPriority, newPriotityTitle, newPriorityValue,
+newCaretTask};
 }
 
  /*

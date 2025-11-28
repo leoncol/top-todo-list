@@ -7,7 +7,7 @@ import setTaskStatus from "./set-task-status.js";
 import setPriority from "./set-priority.js";
 import {updateDOM, domElements, activateCaret, preventButtonBubbling} from "./dom-update-main.js";
 import { formEventListeners, clicked, formTaskEventListeners } from "./dom-form.js";
-import caretActivation from "./caret.js";
+import {caretActivation, caretEventListener} from "./caret.js";
 import { activateCreateNewList, displayListsInfo,handleLocalStorage } from "./controller.js";
 import { sendToLocalStorage } from "./create-list.js";
 
@@ -18,7 +18,7 @@ activateCreateNewList();
 // sendToLocalStorage();
 // displayListsInfo();
 caretActivation();
-
+caretEventListener();
 preventButtonBubbling();
 
 
