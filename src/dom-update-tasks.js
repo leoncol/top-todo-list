@@ -1,10 +1,8 @@
-import addIcon from './assets/add-icon.svg';
 import penIcon from './assets/pen-icon.svg';
 import trashIcon from './assets/trash-bin-icon.svg';
-
-import { listViewDomElements, createNewdomElements,  updateChildButtons, preventButtonBubbling,  } from "./dom-update-main";
-import { handleLocalStorage, handleLocalStorageListView, refreshTasksEventListenersListView} from './controller';
-export {domUpdateTasks, getTaskIndex} 
+import { listViewDomElements, createNewdomElements } from "./dom-update-main";
+import { handleLocalStorageListView, refreshTasksEventListenersListView } from './controller';
+export { domUpdateTasks, getTaskIndex };
 
 function domUpdateTasks(){
     refreshTasks();
@@ -17,11 +15,6 @@ function domUpdateTasks(){
         const dueDate = task.dueDate;
         const priority = task.priority;
         const status = task.status;
-        console.log(title);
-        console.log(description);
-        console.log(dueDate);
-        console.log(priority);
-        console.log(status);
         const domNewElements = createNewdomElements();
         domNewElements.newCard.className = 'card-task';
         listViewDomElements.cardsProjects.appendChild(domNewElements.newCard); // appends task container

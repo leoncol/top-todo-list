@@ -1,6 +1,6 @@
 import { getListsFolderFromLocalStorage } from "./add-to-list";
 import { domElements } from "./dom-update-main";
-export {deleteList };
+export { deleteList };
 
 function deleteList() {
     let home = domElements.home;

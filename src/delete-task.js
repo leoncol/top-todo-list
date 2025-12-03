@@ -1,4 +1,4 @@
-import {sendListLocalStorageListView } from "./add-to-list";
+import { sendListLocalStorageListView } from "./add-to-list";
 import { getSelectedTaskIndexFromLocalStorage, getSelectedListFromLocalStorage } from "./create-task";
 export { deleteTask };
 

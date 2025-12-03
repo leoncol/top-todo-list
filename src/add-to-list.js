@@ -1,10 +1,9 @@
 import { sendToLocalStorage } from "./create-list";
-export {addToList, addToListView, sendListLocalStorageListView, updateListsFolder, getListsFolderFromLocalStorage};
+export { addToList, addToListView, sendListLocalStorageListView, updateListsFolder, getListsFolderFromLocalStorage };
 
 function addToList(mainList, list, task){
     list.push(task);
     sendToLocalStorage(mainList);
-    console.log(list);
 }
 
 function addToListView(list, content, newTask){

@@ -3,15 +3,14 @@ import { activateCreateNewList, activateCreateNewTask, activateCreateNewTaskList
 import { getSelectedList } from "./selected-list";
 import { editList } from "./edit-list";
 import { deleteList } from "./delete-list.js";
-import {datePicker, editTaskDatePicker, datePickerHome} from "./datepicker";
+import { datePicker, editTaskDatePicker, datePickerHome } from "./datepicker";
 import { getSelectedTaskFromLocalStorage, getSelectedListFromLocalStorage, sendSelectedTaskIndexToLocalStorage, sendSelectedTaskToLocalStorage } from "./create-task.js";
 import { getTaskIndex } from "./dom-update-tasks.js";
 import { caretEventListener, cleanCaret,createNewCaretTask } from "./caret.js";
-export {formEventListeners, formCreateNewTask, formTaskEventListeners, 
+export { formEventListeners, formCreateNewTask, formTaskEventListeners, 
   formCreateNewTaskListsView, formTaskEventListenersListsView, getFormValues, 
   getTaskFormValues, getTaskFormValuesHome, editListEventListeners, deleteListEventListeners, editListTitle, editListDescription, formEditTaskListsView, getEditTaskFormValues, formEditTaskEventListenersListsView,
-formDeleteTaskEventListenersListsView};
-
+formDeleteTaskEventListenersListsView };
 
 let listTitle = domElements.listTitleInput;
 let listDescription = domElements.listDescriptionInput;
@@ -50,7 +49,6 @@ let closeButton = domElements.closeButton;
 let enterListForm = domElements.enterListForm;
 let submitButton = domElements.submitButton;
 
-window.taskSubmitButtonListView = taskSubmitButtonListView;
 function formEventListeners() {
   newList.addEventListener("click", () => { // "Show the dialog" button opens the dialog modally for the lists form.
     dialog.showModal();
@@ -181,7 +179,6 @@ function deleteListEventListeners(){
     deleteListDialog.close();
   });
   deleteListButton.addEventListener("click",() => {
-    console.log("Working");
     deleteList();
   });
 }
@@ -242,7 +239,6 @@ function formDeleteTaskEventListenersListsView(){
   })
 
   deleteTaskButton.addEventListener("click",() => {
-    console.log("Working");
     activateDeleteTask();
     deleteTaskDialog.close();
   } )

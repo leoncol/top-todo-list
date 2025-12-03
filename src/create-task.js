@@ -40,7 +40,6 @@ function getListContent(){
 
 function getCurrentList(){
     let currentList = JSON.parse(localStorage.getItem('currentList'));
-    console.log(currentList);
     return currentList;
 }
 

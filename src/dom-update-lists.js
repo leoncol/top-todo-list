@@ -1,9 +1,8 @@
 import addIcon from './assets/add-icon.svg';
-
 import { domElements, createNewdomElements } from "./dom-update-main";
 import { handleLocalStorage } from './controller';
 import { sendListLocalStorage } from './create-list';
-export {domUpdateLists, checkList, updateList, sendSelectedListIndex } 
+export { domUpdateLists, checkList, updateList, sendSelectedListIndex } 
 
 function domUpdateLists(){
     refreshLists();
@@ -11,9 +10,7 @@ function domUpdateLists(){
     for (let i = 0; i < localStorageCopy.length; i++){
         let list = localStorageCopy[i];
         const title = list.title;
-        const description = list.description
-        console.log(title);
-        console.log(description);
+        const description = list.description;
         const domNewElements = createNewdomElements();
         domNewElements.newAnchor.href = "./lists.html";
         domNewElements.newAnchor.className = "anchor-list";
@@ -38,17 +35,8 @@ function domUpdateLists(){
         domNewElements.newAddIcon.type = 'image';
         domNewElements.newAddIcon.classList.add('icon', 'add-task');
         domNewElements.newAddIcon.src = addIcon;
-        domNewElements.newCardIconsLists.appendChild(domNewElements.newAddIcon);
-        
-
-       
-        
+        domNewElements.newCardIconsLists.appendChild(domNewElements.newAddIcon); 
     }
-   
-    
-    
-
-
 }
 
 
@@ -61,7 +49,6 @@ function checkList(){
     let lists = domElements.lists();
     lists.forEach(list =>{
         list.addEventListener("click", () => {
-            console.log(list);
             let getIndex = getListIndex(list);
             sendListLocalStorage(getIndex);
         }) 

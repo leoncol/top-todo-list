@@ -7,7 +7,7 @@ import { deleteListEventListeners, formCreateNewTask, formCreateNewTaskListsView
 import { domUpdateTasks } from "./dom-update-tasks.js";
 import { editTaskListView } from "./edit-task.js";
 import { deleteTask } from "./delete-task.js";
-export {activateCreateNewList, displayListsInfo, handleLocalStorage, activateCreateNewTask, 
+export { activateCreateNewList, displayListsInfo, handleLocalStorage, activateCreateNewTask, 
     activateCreateNewTaskListView, handleLocalStorageListView, activateDomUpdateTasks, refreshEventListenersListView,
 activateEditTaskListView, refreshTasksEventListenersListView, activateDeleteTask };
 
@@ -22,6 +22,7 @@ function activateCreateNewList(){
 
 function activateCreateNewTask(){
     createNewTask();
+    alert('Task created sucesfully!');
 }
 
 function activateCreateNewTaskListView(){

@@ -1,27 +1,20 @@
 import "./styles.css";
-import {caretActivation, caretEventListener} from "./caret.js";
 import todayDate from "./lists-dates.js"
+import { caretActivation, caretEventListener } from "./caret.js";
 import { updateSelectedList } from "./dom-update-selected-list.js";
-import {checkSelectedList} from "./selected-list";
 import { formCreateNewTaskListsView, formTaskEventListenersListsView, editListEventListeners, deleteListEventListeners, formEditTaskListsView, formEditTaskEventListenersListsView,
-    formDeleteTaskEventListenersListsView
-} from "./dom-form.js";
-import { domElements } from "./dom-update-main.js";
-import { activateCreateNewTaskListView, activateDomUpdateTasks } from "./controller.js";
-import { checkTasks } from "./dom-update-tasks.js";
+    formDeleteTaskEventListenersListsView } from "./dom-form.js";
+import { activateDomUpdateTasks } from "./controller.js";
 
 updateSelectedList();
 todayDate();
-checkSelectedList();
 formCreateNewTaskListsView();
 formTaskEventListenersListsView();
 activateDomUpdateTasks();
 editListEventListeners();
 deleteListEventListeners();
-// checkTasks();
 formEditTaskListsView();
 formEditTaskEventListenersListsView();
 formDeleteTaskEventListenersListsView();
 caretActivation();
 caretEventListener();
-console.log('Hello world!');

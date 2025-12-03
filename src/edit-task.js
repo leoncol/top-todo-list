@@ -1,9 +1,8 @@
-import { getCurrentList, getSelectedTaskIndexFromLocalStorage, sendSelectedTaskToLocalStorage  } from "./create-task";
+import { getSelectedTaskIndexFromLocalStorage, sendSelectedTaskToLocalStorage  } from "./create-task";
 import { getSelectedList } from "./selected-list";
 import { sendListLocalStorageListView } from "./add-to-list";
 import { getEditTaskFormValues } from "./dom-form";
-import { refreshTasksEventListenersListView } from "./controller";
-export {editTaskListView}
+export { editTaskListView }
 
 function editTaskListView() {
     let currentList = getSelectedList();
@@ -40,10 +39,6 @@ function editTaskListView() {
     task.dueDate = dueDate;
     task.priority = priority;
     task.status = status;
-    
     sendListLocalStorageListView(currentList);
     sendSelectedTaskToLocalStorage(task);
-    
 }
-
-
