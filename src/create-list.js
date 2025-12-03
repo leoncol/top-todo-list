@@ -1,16 +1,11 @@
-import {getFormValues} from "./dom-form"
-export {createNewList, listsFolder, sendToLocalStorage, getFromLocalStorage, addTaskToThisList, sendListLocalStorage}; 
+import { getFormValues } from "./dom-form";
+export { createNewList, listsFolder, sendToLocalStorage, getFromLocalStorage, addTaskToThisList, sendListLocalStorage }; 
 
 const listsFolder = [];
 
-
-
 function sendToLocalStorage(updatedList){
     localStorage.setItem('listsFolder', JSON.stringify(updatedList));
-    
-    
 }
-
 
 function getFromLocalStorage(){
     const storedListsFolder = localStorage.getItem('listsFolder');
@@ -19,15 +14,9 @@ function getFromLocalStorage(){
     return listsFolderRetrieve;
     } else {
         localStorage.setItem('listsFolder', JSON.stringify(listsFolder)); // if it's the first item
-        return listsFolder
+        return listsFolder;
     }
-    
 }
-
-
-
-
-
 
 class NewList {
     constructor(title, description, content){
@@ -35,7 +24,6 @@ class NewList {
         this.description = description;
         this.content = [];
     }
-    
 } 
 
 function createNewList() {
@@ -48,50 +36,22 @@ function createNewList() {
         let newList = new NewList(title, description)
         listsFolderCopy.push(newList);
         localStorage.setItem('listsFolder', JSON.stringify(listsFolderCopy));
-        
-    
-        
-        
     } else if (!allValues.includes('')){ // Ensures we don't introduce empty list elements when refreshing
         const title = formValues.listTitleInputValue;
         const description = formValues.listDescriptionInputValue;
         let newList = new NewList(title, description)
-        // let listsFolderRetrieve = 0;
-        // listsFolderRetrieve = getFromLocalStorage();
-        // listsFolderRetrieve.push(newList);
-        // localStorage.setItem('listsFolder', JSON.stringify(listsFolderRetrieve));
         listsFolderCopy.push(newList);
         localStorage.setItem('listsFolder', JSON.stringify(listsFolderCopy));
-      
-
-
     }
-    
-   
-   
-   
-
 }
-
-
 
 function sendListLocalStorage(index){
     let listsFolder = getFromLocalStorage();
     let list = listsFolder[index];
     localStorage.setItem('currentList', JSON.stringify(list));
-    
 }
-
-
 
 const addTaskToThisList = {
     MainListCopy: [],
     listCopy: [],
-} 
-
-
-
-
-window.createNewList = createNewList;
-
-window.listsFolder = listsFolder;
+};

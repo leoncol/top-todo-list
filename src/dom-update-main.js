@@ -1,5 +1,5 @@
-import {caretActivation, caretEventListener} from "./caret";
-export {domElements, listViewDomElements, activateCaret, createNewdomElements, preventButtonBubbling, updateChildButtons};
+import {caretActivation, caretEventListener } from "./caret";
+export {domElements, listViewDomElements, activateCaret, createNewdomElements, preventButtonBubbling, updateChildButtons };
 
 function activateCaret(){
     caretActivation();
@@ -40,7 +40,7 @@ const domElements = {
     }
 };
 
-window.domElements = domElements;
+
 
 const listViewDomElements = {
     taskTitleInput: document.querySelector("#task-title-lview"),
@@ -127,7 +127,8 @@ function createNewdomElements(){
     const newPriority = document.createElement("p");
     const newPriotityTitle = document.createElement("p");
     const newPriorityValue = document.createElement("p");
-    const newCaretTask = document.createElement('li');
+    const newCaretTask = document.createElement("a");
+    const newCaretLi = document.createElement("li");
     
 
 
@@ -136,7 +137,7 @@ function createNewdomElements(){
     return {newAnchor, newButton, newCard, newCardTextContainer, newCardTitle, 
         newCardText, newIconContainer, newCardIconsLists, newAddIcon, newPenIcon, newTrashIcon, newMetadata,
     newStatus, newStatusTitle, newStatusValue, newDueDate, newDueDateTitle, newDueDateValue, newPriority, newPriotityTitle, newPriorityValue,
-newCaretTask};
+newCaretTask, newCaretLi};
 }
 
  /*

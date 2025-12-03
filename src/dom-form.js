@@ -1,4 +1,4 @@
-import { domElements, listViewDomElements} from "./dom-update-main";
+import { domElements, listViewDomElements } from "./dom-update-main";
 import { activateCreateNewList, activateCreateNewTask, activateCreateNewTaskListView, activateEditTaskListView, activateDeleteTask } from "./controller";
 import { getSelectedList } from "./selected-list";
 import { editList } from "./edit-list";
@@ -6,13 +6,12 @@ import { deleteList } from "./delete-list.js";
 import {datePicker, editTaskDatePicker, datePickerHome} from "./datepicker";
 import { getSelectedTaskFromLocalStorage, getSelectedListFromLocalStorage, sendSelectedTaskIndexToLocalStorage, sendSelectedTaskToLocalStorage } from "./create-task.js";
 import { getTaskIndex } from "./dom-update-tasks.js";
-export {formEventListeners, clicked, formCreateNewTask, formTaskEventListeners, 
+import { caretEventListener, cleanCaret,createNewCaretTask } from "./caret.js";
+export {formEventListeners, formCreateNewTask, formTaskEventListeners, 
   formCreateNewTaskListsView, formTaskEventListenersListsView, getFormValues, 
   getTaskFormValues, getTaskFormValuesHome, editListEventListeners, deleteListEventListeners, editListTitle, editListDescription, formEditTaskListsView, getEditTaskFormValues, formEditTaskEventListenersListsView,
-formDeleteTaskEventListenersListsView}
-function clicked() {
-  console.log('clicked and working');
-}
+formDeleteTaskEventListenersListsView};
+
 
 let listTitle = domElements.listTitleInput;
 let listDescription = domElements.listDescriptionInput;
@@ -53,39 +52,32 @@ let submitButton = domElements.submitButton;
 
 window.taskSubmitButtonListView = taskSubmitButtonListView;
 function formEventListeners() {
-  // "Show the dialog" button opens the dialog modally for the lists form.
-  newList.addEventListener("click", () => {
+  newList.addEventListener("click", () => { // "Show the dialog" button opens the dialog modally for the lists form.
     dialog.showModal();
   });
 
- 
-      
+  closeButton.addEventListener("click", () => { // "Close" button closes the dialog
+    dialog.close();
+  });
 
-
-// "Close" button closes the dialog
-closeButton.addEventListener("click", () => {
-  dialog.close();
-});
-
-   
   enterListForm.addEventListener("submit", function (event){
     event.preventDefault();
-});
+  });
 
-submitButton.addEventListener("click", () => {
+  submitButton.addEventListener("click", () => {
     let validate = validateNewList();
     if (validate == true){
       activateCreateNewList();
       enterListForm.reset();
       dialog.close();
+      cleanCaret();
+      createNewCaretTask();
+      caretEventListener();
     } else {
       alert('Fill out all fields!');
     }
-  
-});
-
+  });
 }
-
 
 function formCreateNewTask(){
   let lists = domElements.lists();
@@ -94,22 +86,20 @@ function formCreateNewTask(){
       let type = event.target;
       if (type.tagName === 'INPUT'){
         datePickerHome();
-        taskDialog.showModal();
-        
+        taskDialog.showModal(); 
       }
-    })
-  })
-    
+    });
+  });  
 }
 
 function formTaskEventListeners(){
   taskCloseButton.addEventListener("click", () => {
     taskDialog.close();
-  })
+  });
 
   taskForm.addEventListener("submit", function (event){
     event.preventDefault();
-  })
+  });
 
   taskSubmitButton.addEventListener("click", () => {
     let validate = validateNewTaskHome();
@@ -120,42 +110,39 @@ function formTaskEventListeners(){
     } else {
       alert('Fill out all fields!');
     }
-    
-  })
+  });
 }
 
 function formCreateNewTaskListsView(){
-      let selectedList = listViewDomElements.selectedList();
-      selectedList.addEventListener("click", (event) => {
-        let type = event.target;
-        let className = type.classList[1]; // we check the className by checking the 1 slot since elements will always have two classes the icon general class
-        // and the specific class.
-        switch (className){
-          case 'add-task':
-            datePicker();
-            taskDialogListView.showModal();
-            break;
-          case 'edit-list':
-            editListFormValues();
-            editListDialog.showModal();
-            break;
-          case 'delete-list':
-            deleteListDialog.showModal();
-            break;
-        }
-        console.log(className);
-
-      })
+  let selectedList = listViewDomElements.selectedList();
+  selectedList.addEventListener("click", (event) => {
+    let type = event.target;
+    let className = type.classList[1]; // we check the className by checking the 1 slot since elements will always have two classes the icon general class
+    // and the specific class.
+    switch (className){
+      case 'add-task':
+        datePicker();
+        taskDialogListView.showModal();
+        break;
+      case 'edit-list':
+        editListFormValues();
+        editListDialog.showModal();
+        break;
+      case 'delete-list':
+        deleteListDialog.showModal();
+        break;
+    }
+  });
 }
 
 function formTaskEventListenersListsView(){
   taskCloseButtonListView.addEventListener("click", () => {
     taskDialogListView.close();
-  })
+  });
 
   taskFormListView.addEventListener("submit", function (event){
     event.preventDefault();
-  })
+  });
 
   taskSubmitButtonListView.addEventListener("click", () => {
     let validate = validateNewTask();
@@ -165,19 +152,18 @@ function formTaskEventListenersListsView(){
       taskDialogListView.close();
     } else {
       alert('Fill out all fields!');
-    }
-    
-  })
+    }    
+  });
 }
 
 function editListEventListeners(){
     editListCloseButton.addEventListener("click", () => {
       editListDialog.close();
-    })
+    });
 
     editListForm.addEventListener("submit", function (event){
       event.preventDefault();
-    })
+    });
 
     editListSubmitButton.addEventListener("click", () => {
       let validate = validateEditList();
@@ -187,18 +173,17 @@ function editListEventListeners(){
       } else {
         alert('Fill out all fields!');
       }
-      
-    })
+    });
 }
 
 function deleteListEventListeners(){
   deleteListCloseButton.addEventListener("click", () => {
     deleteListDialog.close();
-  })
+  });
   deleteListButton.addEventListener("click",() => {
     console.log("Working");
     deleteList();
-  } )
+  });
 }
 
 function formEditTaskListsView(){
@@ -218,19 +203,14 @@ function formEditTaskListsView(){
           editTaskFormValues();
           editTaskDatePicker();
           editTaskDialog.showModal();
-          console.log('working');
           break;
         case 'delete-task':
           deleteTaskDialog.showModal();
-          console.log('working');
           break;
       }
-  })
- 
-
+    })
   })
 }
-
 
 function formEditTaskEventListenersListsView(){
   closeButtonEditTask.addEventListener("click", () => {
@@ -249,12 +229,10 @@ function formEditTaskEventListenersListsView(){
     } else {
       alert('Fill out all fields!');
     }
-    
   })
 }
 
 function formDeleteTaskEventListenersListsView(){
-
   deleteTaskCloseButton.addEventListener("click", () => {
     deleteTaskDialog.close();
   })
@@ -268,23 +246,14 @@ function formDeleteTaskEventListenersListsView(){
     activateDeleteTask();
     deleteTaskDialog.close();
   } )
-
-  
 }
-
-
-
-
 
 function getFormValues(){
     const listTitleInputValue = domElements.listTitleInput.value;
-    const listDescriptionInputValue = domElements.listDescriptionInput.value
+    const listDescriptionInputValue = domElements.listDescriptionInput.value;
 
-
-
-    return {listTitleInputValue, listDescriptionInputValue}
+    return {listTitleInputValue, listDescriptionInputValue};
 }
-
 
 function getTaskFormValues(){
     const taskTitleInputValue = listViewDomElements.taskTitleInput.value;
@@ -293,20 +262,17 @@ function getTaskFormValues(){
     const taskPriorityInputValue = listViewDomElements.taskPriorityInput.value;
     const taskStatusInputValue = listViewDomElements.taskStatusInput.value;
 
-    return {taskTitleInputValue, taskDescriptionInputValue, taskDateInputValue, taskPriorityInputValue, taskStatusInputValue}
+    return {taskTitleInputValue, taskDescriptionInputValue, taskDateInputValue, taskPriorityInputValue, taskStatusInputValue};
 }
 
 function getTaskFormValuesHome(){
-    const taskTitleInputValueHome = domElements.taskTitleInput.value;
-    const taskDescriptionInputValueHome = domElements.taskDescriptionInput.value;
-    const taskDateInputValueHome = domElements.taskDateInput.value;
-    const taskPriorityInputValueHome = domElements.taskPriorityInput.value;
-    const taskStatusInputValueHome = domElements.taskStatusInput.value;
+  const taskTitleInputValueHome = domElements.taskTitleInput.value;
+  const taskDescriptionInputValueHome = domElements.taskDescriptionInput.value;
+  const taskDateInputValueHome = domElements.taskDateInput.value;
+  const taskPriorityInputValueHome = domElements.taskPriorityInput.value;
+  const taskStatusInputValueHome = domElements.taskStatusInput.value;
 
-    return {taskTitleInputValueHome, taskDescriptionInputValueHome, taskDateInputValueHome, taskPriorityInputValueHome, taskStatusInputValueHome}
-
-
-     
+  return {taskTitleInputValueHome, taskDescriptionInputValueHome, taskDateInputValueHome, taskPriorityInputValueHome, taskStatusInputValueHome};
 }
 
 function getEditTaskFormValues(){
@@ -316,9 +282,8 @@ function getEditTaskFormValues(){
   const editTaskPriority = listViewDomElements.editTaskPriority.value;
   const editTaskStatus = listViewDomElements.editTaskStatus.value;
 
-  return {editTaskTitle, editTaskDescription, editTaskDate, editTaskPriority, editTaskStatus}
+  return {editTaskTitle, editTaskDescription, editTaskDate, editTaskPriority, editTaskStatus};
 }
-
 
 
 function editListFormValues(){
@@ -366,14 +331,6 @@ function editTaskFormValues(){
       currentTaskStatus.value = 2;
       break;
   }
-   /*  <option value="0">To do</option>
-                                    <option value="1">Doing</option>
-                                    <option value="2">Done</option> */
-}
-
-
-function editListChangeValues(){
-
 }
 
 function validateNewList(){
@@ -426,10 +383,8 @@ function validateEditTask(){
 }
 
 function validateEditList(){
-  
   const title = editListTitle.value;
   const description = editListDescription.value;
-  
   if (title == '' || description == ''){
     return false;
   } else {

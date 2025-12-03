@@ -1,12 +1,9 @@
 import addIcon from './assets/add-icon.svg';
 
-import { domElements, createNewdomElements, updateChildButtons, preventButtonBubbling, lists } from "./dom-update-main";
-import { handleLocalStorage} from './controller';
-import { getFromLocalStorage, sendListLocalStorage} from './create-list';
-export {domUpdateLists, checkList, updateList} 
-
-
-
+import { domElements, createNewdomElements } from "./dom-update-main";
+import { handleLocalStorage } from './controller';
+import { sendListLocalStorage } from './create-list';
+export {domUpdateLists, checkList, updateList, sendSelectedListIndex } 
 
 function domUpdateLists(){
     refreshLists();
@@ -44,7 +41,7 @@ function domUpdateLists(){
         domNewElements.newCardIconsLists.appendChild(domNewElements.newAddIcon);
         
 
-        // preventButtonBubbling();
+       
         
     }
    
@@ -79,16 +76,6 @@ function getListIndex(list){
 }
 
 
-/* function sendToLocalStorage(){
-    let checkLocalStorage = getFromLocalStorage();
-    localStorage.setItem('listsFolder', JSON.stringify(checkLocalStorage));
-    
-    
-} */
-
-
-
-window.updateList = updateList; 
 
  function refreshLists(){
         let lists = updateList();
@@ -97,36 +84,6 @@ window.updateList = updateList;
         })
     }
 
-    window.refreshLists = refreshLists;
-    window.childButtons = childButtons;
-
-
 function sendSelectedListIndex(index){
     localStorage.setItem('currentListIndex', JSON.stringify(index));
 }
-
-    
-/*              
-                        <button class="button-task" type="button">
-                            <div class="card">
-                                <div class="card-text-container">
-                                    <p class="card-text-title">Title card</p>
-                                    <p class="card-text">Lorem ipsum
-                                        dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        Ut enim ad minim veniam</p>
-                                </div>
-                                <div class="card-icons-container-new-list">
-                                    <div class="card-icons">
-                                        <img src="assets/add-icon.svg" class="icon">
-                                    </div>
-                                </div>
-                            </div>
-                        </button>
-                    </a>
-                        </div>
-                    </div>
-
-                */
-
-/*  href="./lists.html"
-                */

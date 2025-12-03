@@ -6,11 +6,5 @@ function deleteFromList (list, task){
     if (index != -1){
         let removedElement = list.content.splice(index, 1);
         return removedElement;
-    } 
-    
-
-
-
-    }   
-
-window.deleteFromList = deleteFromList;
+    }    
+}   

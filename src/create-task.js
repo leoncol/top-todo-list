@@ -1,5 +1,5 @@
-import {addToList, addToListView} from "./add-to-list";
-import { getFromLocalStorage, sendToLocalStorage } from "./create-list";
+import {addToList, addToListView } from "./add-to-list";
+import { getFromLocalStorage } from "./create-list";
 import { format } from "date-fns";
 import { getTaskFormValues, getTaskFormValuesHome } from "./dom-form";
 export {createNewTask, createNewTaskListView, getSelectedListFromLocalStorage, sendSelectedTaskToLocalStorage, getSelectedTaskFromLocalStorage, 
@@ -35,20 +35,14 @@ class NewTask {
 
 function getListContent(){
     let mainList = getFromLocalStorage();
-    return mainList
+    return mainList;
 }
 
 function getCurrentList(){
     let currentList = JSON.parse(localStorage.getItem('currentList'));
     console.log(currentList);
-    return currentList
+    return currentList;
 }
-
-
-
-window.getCurrentList = getCurrentList();
-
-window.getListContent = getListContent;
 
 function createNewTask() {
     let mainList = getListContent();
@@ -60,11 +54,8 @@ function createNewTask() {
     let dueDate = taskFormValuesHome.taskDateInputValueHome;
     let priority = parseInt(taskFormValuesHome.taskPriorityInputValueHome);
     let status = parseInt(taskFormValuesHome.taskStatusInputValueHome);
-    let newTask = new NewTask(title, description, dueDate, priority, status)
-    
+    let newTask = new NewTask(title, description, dueDate, priority, status);
     addToList(mainList,listContent, newTask);
-    
-    
 }
 
 function createNewTaskListView() {
@@ -77,12 +68,8 @@ function createNewTaskListView() {
     let priority = parseInt(taskFormValues.taskPriorityInputValue);
     let status = parseInt(taskFormValues.taskStatusInputValue);
     let newTask = new NewTask(title, description, dueDate, priority, status);
-    
     addToListView(currentList, content, newTask);
-    
-    
 }
-
 
 function getSelectedListFromLocalStorage(){
     const storedSelectedList = JSON.parse(localStorage.getItem('currentList'));
@@ -108,33 +95,7 @@ function getSelectedTaskFromLocalStorage(){
     return selectedTask;
 }
 
-function getListsFolderFromLocalStorage(){
-    const listsFolder = JSON.parse(localStorage.getItem('listsFolder'));
-    return listsFolder;
-}
-
-
 function getSelectedListIndex(){
     let currentListIndex = JSON.parse(localStorage.getItem('currentListIndex'));
     return currentListIndex;
 }
-
-
-/* 
-function getFromLocalStorage(){
-    const storedListsFolder = localStorage.getItem('listsFolder');
-    if (storedListsFolder != null) {
-    const listsFolderRetrieve = JSON.parse(storedListsFolder);
-    return listsFolderRetrieve;
-    } else {
-        localStorage.setItem('listsFolder', JSON.stringify(listsFolder)); // if it's the first item
-        return listsFolder
-    }
-    
-}
-
-*/
-
-window.createNewTask = createNewTask;
-
-

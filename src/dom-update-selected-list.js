@@ -2,12 +2,9 @@ import { createNewdomElements, domElements, listViewDomElements } from "./dom-up
 import addIcon from './assets/add-icon.svg'
 import trashIcon from './assets/trash-bin-icon.svg';
 import penIcon from './assets/pen-icon.svg';
-import { getFromLocalStorage } from "./create-list";
 import { getSelectedList } from "./selected-list";
 import { refreshEventListenersListView } from "./controller";
-export {updateSelectedList, refreshUpdateSelectedList};
-
-
+export {updateSelectedList, refreshUpdateSelectedList };
 
 function updateSelectedList(){
     const selectedList = getSelectedList();
@@ -38,10 +35,7 @@ function updateSelectedList(){
     domNewElements.newTrashIcon.classList.add('icon', 'delete-list');
     domNewElements.newTrashIcon.src = trashIcon;
     domNewElements.newCardIconsLists.appendChild(domNewElements.newTrashIcon);    
-
-
 }
-
 
 function refreshUpdateSelectedList(){
     refreshLists();
@@ -74,14 +68,12 @@ function refreshUpdateSelectedList(){
     domNewElements.newTrashIcon.src = trashIcon;
     domNewElements.newCardIconsLists.appendChild(domNewElements.newTrashIcon);
     refreshEventListenersListView();
-
-
 }
 
- function refreshLists(){
-        let currentListDomElement = getCurrentListDomElement();
-        currentListDomElement.remove();
-    }
+function refreshLists(){
+    let currentListDomElement = getCurrentListDomElement();
+    currentListDomElement.remove();
+}
 
 function getCurrentListDomElement(){
     let currentList = listViewDomElements.selectedList();

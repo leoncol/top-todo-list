@@ -1,10 +1,6 @@
-import { getListsFolderFromLocalStorage, sendListLocalStorageListView } from "./add-to-list";
-import { getSelectedTaskIndexFromLocalStorage, getSelectedListFromLocalStorage, getSelectedListIndex } from "./create-task";
-import { domElements } from "./dom-update-main";
+import {sendListLocalStorageListView } from "./add-to-list";
+import { getSelectedTaskIndexFromLocalStorage, getSelectedListFromLocalStorage } from "./create-task";
 export { deleteTask };
-
-
-
 
 function deleteTask() {
    const index = getSelectedTaskIndexFromLocalStorage();
@@ -13,9 +9,3 @@ function deleteTask() {
    listContent.splice(index, 1);
    sendListLocalStorageListView(list);
 }
-
-
-
-
-
-

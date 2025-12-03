@@ -4,12 +4,7 @@ import trashIcon from './assets/trash-bin-icon.svg';
 
 import { listViewDomElements, createNewdomElements,  updateChildButtons, preventButtonBubbling,  } from "./dom-update-main";
 import { handleLocalStorage, handleLocalStorageListView, refreshTasksEventListenersListView} from './controller';
-import { getFromLocalStorage, getListLocalStorage} from './create-list';
-import { getSelectedListFromLocalStorage, sendSelectedTaskIndexToLocalStorage, sendSelectedTaskToLocalStorage } from './create-task';
 export {domUpdateTasks, getTaskIndex} 
-
-
-
 
 function domUpdateTasks(){
     refreshTasks();
@@ -94,102 +89,12 @@ function domUpdateTasks(){
         domNewElements.newTrashIcon.src = trashIcon;
         domNewElements.newCardIconsLists.appendChild(domNewElements.newTrashIcon);
         refreshTasksEventListenersListView();
-
-       /* 
-
-
-       .priority-value-high {
-    color: red;
-}
-
-.priority-value-low {
-    color: green;
-}
-         this.status = 'To do';
-            break;
-        case 1:
-            this.status = 'Doing';
-            break;
-        case 2: 
-            this.status = 'Done'; 
-       
-
-            .status-value-todo {
-    color: red;
-}
-
-.status-value-doing {
-    color: blue;
-}
-
-.status-value-done {
-    color: green;
-}
-       
-       <div class="card-task">
-                        <div class="card-text-container">
-                            <p class="card-text-title">Title card</p>
-                            <p class="card-text">Lorem ipsum
-                                dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                Ut enim ad minim veniam</p>  
-                        </div>
-                        <div class="card-icons-container">
-                            <div class="metadata">
-                                <div class="status">
-                                <p class="status-title">Status:</p>
-                                <p class="status-value-doing">Doing</p>
-                                </div>
-                                <div class="due-date">
-                                    <p class="due-date-title">Due date:</p>
-                                    <p class="due-date-value">12-02-2100</p>
-                                </div>
-                                <div class="priority">
-                                    <p class="priority-title">Priority:</p>
-                                    <p class="priority-value-high">High</p>
-                                </div>
-                            </div>
-                            <div class="card-icons-tasks">
-                                <img src="assets/pen-icon.svg" class="icon">
-                                <img src="assets/trash-bin-icon.svg" class="icon">
-                            </div>
-                        </div>
-                    </div>
-        */
     }
-   
-    
-    
-
-
 }
-
 
 function updateTasks(){
     let tasks =  listViewDomElements.listTasks();
     return tasks;
-}
-
-/* function checkTasks(){
-    let tasks = listViewDomElements.listTasks();
-    tasks.forEach(task =>{
-        task.addEventListener("click", () => {
-            console.log(task);
-            let taskIndex = getTaskIndex(task);
-            let selectedList = getSelectedListFromLocalStorage();
-            let selectedTask = selectedList.content[taskIndex]
-            sendSelectedTaskToLocalStorage(selectedTask);
-            sendSelectedTaskIndexToLocalStorage(taskIndex);
-            
-        }) 
-    })
-} */
-
-function getTask(){
-    let task = listViewDomElements.listTasks();
-    let taskIndex = getTaskIndex(task);
-    let selectedList = getSelectedListFromLocalStorage();
-    let selectedTask = selectedList.content[taskIndex];
-    return selectedTask;
 }
 
 function getTaskIndex(task){
@@ -199,48 +104,11 @@ function getTaskIndex(task){
     return index;
 }
 
-
-
-
- function refreshTasks(){
-        let tasks = updateTasks();
-        if (tasks != null){
+function refreshTasks(){
+    let tasks = updateTasks();
+    if (tasks != null){
             tasks.forEach(element => {
             element.remove();
         })
-        }
-        
-    }
-
-    window.refreshLists = refreshLists;
-    window.childButtons = childButtons;
-
-
-function sendListNode(listDOMNode){
-    localStorage.setItem('nodeList', JSON.stringify(listDOMNode));
+    }     
 }
-    
-/*              
-                        <button class="button-task" type="button">
-                            <div class="card">
-                                <div class="card-text-container">
-                                    <p class="card-text-title">Title card</p>
-                                    <p class="card-text">Lorem ipsum
-                                        dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        Ut enim ad minim veniam</p>
-                                </div>
-                                <div class="card-icons-container-new-list">
-                                    <div class="card-icons">
-                                        <img src="assets/add-icon.svg" class="icon">
-                                    </div>
-                                </div>
-                            </div>
-                        </button>
-                    </a>
-                        </div>
-                    </div>
-
-                */
-
-/*  href="./lists.html"
-                */

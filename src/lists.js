@@ -22,4 +22,6 @@ deleteListEventListeners();
 formEditTaskListsView();
 formEditTaskEventListenersListsView();
 formDeleteTaskEventListenersListsView();
+caretActivation();
+caretEventListener();
 console.log('Hello world!');
